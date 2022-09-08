@@ -1,0 +1,28 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.fixAll.eslint": true,
+    "source.fixAll.markdownlint": true,
+    "source.fixAll.stylelint": true,
+    "source.organizeImports": true
+  },
+  "editor.codeLens": true,
+  "editor.formatOnSave": true,
+  "gitlens.blame.ignoreWhitespace": true,
+  "gitlens.codeLens.authors.enabled": true,
+  "gitlens.codeLens.enabled": true,
+  "gitlens.codeLens.recentChange.enabled": true,
+  "gitlens.defaultDateStyle": "absolute",
+  "path-intellisense.autoSlashAfterDirectory": true,
+  "todo-tree.general.tags": [
+    "TODO",
+    "HACK",
+    "FIXME",
+    "BUG",
+    "REFACTOR",
+    "DOC",
+    "ADD"
+  ],
+  "todo-tree.highlights.enabled": true,
+  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)"
+}

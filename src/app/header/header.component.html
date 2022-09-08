@@ -1,0 +1,25 @@
+<br-header
+  image="https://www.gov.br/ds/assets/img/govbr-logo.png"
+  signature="Serpro | Dataprev"
+  title="Web Components GOVBR-DS"
+  subtitle="Quickstart Angular"
+  has-menu
+>
+  <div slot="headerMenu">
+    <br-button
+      role="option"
+      circle
+      density="small"
+      aria-label="Menu"
+      icon="bars"
+      data-toggle="menu"
+      data-target="#main-navigation"
+    ></br-button>
+  </div>
+  <div slot="headerAction">
+    <br-header-action
+      title-links="Acesso Rápido"
+      [listLinks]="links"
+    ></br-header-action>
+  </div>
+</br-header>

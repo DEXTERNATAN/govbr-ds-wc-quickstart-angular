@@ -1,0 +1,146 @@
+include:
+  - template: Security/Dependency-Scanning.gitlab-ci.yml
+  - template: Security/License-Scanning.gitlab-ci.yml
+  - template: Security/SAST.gitlab-ci.yml
+  - template: Security/Secret-Detection.gitlab-ci.yml
+
+image: node:16-alpine
+
+stages:
+  # Inicia o processo
+  # Em branches que geram releases precisa de autorização para iniciar todo o pipeline
+  - start
+  # Instala as dependências
+  - preparation
+  # Roda as validações disponibilizadas pelo gitlab
+  # Inicia logo após o 'install'
+  - quality:gitlab
+  # Roda os testes e lints definidos pelo time
+  # Inicia logo após o 'install'
+  - lint
+  # Publica no gitpages
+  - pages
+  # Executa o semantic-release conforme o .releaserc.yml
+  - release
+
+cache:
+  paths:
+    - node_modules/
+
+variables:
+  SAST_EXCLUDED_PATHS: spec, test, tests, tmp, .husky, .storybook, .vscode, coverage, dist, node_modules, package-lock.json, *.spec.js, **/*.spec.js.snap
+  SECRET_DETECTION_HISTORIC_SCAN: "false"
+  SECRET_DETECTION_EXCLUDED_PATHS: spec, test, tests, tmp, .husky, .vscode, coverage, dist, node_modules
+
+init:
+  stage: start
+  environment:
+    name: production
+  when: manual
+  allow_failure: false
+  script:
+    - echo 'Iniciando o processo de publicação no gitpages, geração de changelog, tags e release...'
+  only:
+    - main
+    - /^[0-9]+(\.([0-9]|x))+$/
+    - /^[0-9]+(\.([0-9]|x))+(-(rc|beta|alpha))?$/
+    - /(rc|beta|alpha)$/
+
+install:
+  stage: preparation
+  when: on_success
+  allow_failure: false
+  needs: ["init"]
+  artifacts:
+    paths:
+      - node_modules
+    expire_in: 1 day
+  script:
+    - apk --no-cache add git
+    # TODO: remover o --force após a atualização do web components
+    - npm install --force
+  only:
+    - main
+    - merge_requests
+    - /^[0-9]+(\.([0-9]|x))+$/
+    - /^[0-9]+(\.([0-9]|x))+(-(rc|beta|alpha))?$/
+    - /(rc|beta|alpha)$/
+
+dependency_scanning:
+  stage: quality:gitlab
+  when: on_success
+  script:
+    - echo 'Security/Dependency-Scanning.gitlab-ci.yml'
+
+license_scanning:
+  stage: quality:gitlab
+  when: on_success
+  script:
+    - echo 'Security/License-Scanning.gitlab-ci.yml'
+
+sast:
+  stage: quality:gitlab
+  when: on_success
+  script:
+    - echo 'Security/SAST.gitlab-ci.yml'
+
+secret_detection:
+  stage: quality:gitlab
+  when: on_success
+  script:
+    - echo 'Security/Secret-Detection.gitlab-ci.yml'
+
+lint:commit:
+  stage: lint
+  when: on_success
+  needs: ["install"]
+  artifacts:
+    when: always
+    paths:
+      - report-commitlint.txt
+    expire_in: 1 month
+  before_script:
+    - apk --no-cache add git
+  script:
+    - echo "${CI_COMMIT_MESSAGE}" | npx commitlint > report-commitlint.txt
+  only:
+    - main
+    - merge_requests
+    - /^[0-9]+(\.([0-9]|x))+$/
+    - /^[0-9]+(\.([0-9]|x))+(-(rc|beta|alpha))?$/
+    - /(rc|beta|alpha)$/
+
+pages:
+  stage: pages
+  artifacts:
+    paths:
+      - public
+  before_script:
+    - npm install -g @angular/cli@14.1.1
+  script:
+    - mkdir -p public
+    - rm -rf "public/$CI_COMMIT_REF_NAME"
+    - ng build --base-href="/dev/wbc/govbr-ds-wbc-quickstart-angular/$CI_COMMIT_REF_NAME/"
+    - mv dist "public/$CI_COMMIT_REF_NAME"
+  only:
+    - main
+    - merge_requests
+    - /^[0-9]+(\.([0-9]|x))+$/
+    - /^[0-9]+(\.([0-9]|x))+(-(rc|beta|alpha))?$/
+    - /(rc|beta|alpha)$/
+
+publish:
+  stage: release
+  when: on_success
+  artifacts:
+    paths:
+      - dist
+    expire_in: 1 week
+  before_script:
+    - apk --no-cache add git zip
+  script:
+    - npx semantic-release --debug
+  only:
+    - main
+    - /^[0-9]+(\.([0-9]|x))+$/
+    - /^[0-9]+(\.([0-9]|x))+(-(rc|beta|alpha))?$/

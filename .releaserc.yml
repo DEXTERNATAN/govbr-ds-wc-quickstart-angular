@@ -1,0 +1,41 @@
+---
+# Documentação: https://semantic-release.gitbook.io/semantic-release/v/beta/usage/configuration
+branches:
+  # Estável
+  - main
+  - '+([0-9])?(.{+([0-9]),x}).x'
+  # Próximas versões
+  - next
+  - next-major
+  # Prereleases
+  # Formatos aceitáveis: 1.1.1-prefixo, 1.1.x-prefixo, 1.x.x-prefixo
+  - name: '+([0-9])?(.{+([0-9]),x}).x-rc'
+    prerelease: rc
+  - name: '+([0-9])?(.{+([0-9]),x}).x-beta'
+    prerelease: beta
+  - name: '+([0-9])?(.{+([0-9]),x}).x-alpha'
+    prerelease: alpha
+plugins:
+  - - '@semantic-release/commit-analyzer'
+    - preset: conventionalcommits
+  - - '@semantic-release/release-notes-generator'
+    - preset: conventionalcommits
+      parserOpts:
+        noteKeywords:
+          - BREAKING CHANGE
+          - BREAKING CHANGES
+          - BREAKING
+      writerOpts:
+        commitsSort:
+          - subject
+          - scope
+  - - '@semantic-release/changelog'
+  - - '@semantic-release/gitlab'
+  - - '@semantic-release/git'
+    - assets:
+        - package.json
+        - CHANGELOG.md
+      message: |-
+        chore(release): ${nextRelease.version} [skip ci]
+
+        ${nextRelease.notes}

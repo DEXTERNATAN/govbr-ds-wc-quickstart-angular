@@ -1,0 +1,72 @@
+{
+  "name": "@govbr-ds/webcomponents-quickstart-angular",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Projeto exemplificando o uso da biblioteca de Web Components do GOVBR-DS em projetos Angular.",
+  "keywords": [
+    "design system",
+    "govbr-ds",
+    "web components",
+    "angular"
+  ],
+  "homepage": "https://govbr-ds.gitlab.io/dev/wbc/govbr-ds-wbc-quickstart-angular",
+  "bugs": "https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/-/issues",
+  "repository": "gitlab:govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular.git",
+  "license": "MIT",
+  "author": "SERPRO <govbr-ds@serpro.gov.br> (http://serpro.gov.br/)",
+  "contributors": [
+    "Dataprev (https://portal3.dataprev.gov.br/)"
+  ],
+  "scripts": {
+    "build": "ng build",
+    "commit": "git-cz",
+    "ng": "ng",
+    "prepare": "husky install",
+    "start": "ng serve --host 0.0.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
+  },
+  "dependencies": {
+    "@angular/animations": "^14.2.0",
+    "@angular/common": "^14.2.0",
+    "@angular/compiler": "^14.2.0",
+    "@angular/core": "^14.2.0",
+    "@angular/forms": "^14.2.0",
+    "@angular/platform-browser": "^14.2.0",
+    "@angular/platform-browser-dynamic": "^14.2.0",
+    "@angular/router": "^14.2.0",
+    "@govbr-ds/core": "^3.0.1",
+    "@govbr-ds/webcomponents": "^1.2.0",
+    "rxjs": "~7.5.6",
+    "tslib": "^2.4.0",
+    "zone.js": "~0.11.8"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^14.2.1",
+    "@angular/cli": "~14.2.1",
+    "@angular/compiler-cli": "^14.2.0",
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
+    "@commitlint/cz-commitlint": "^17.1.2",
+    "@commitlint/format": "^17.0.0",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/gitlab": "^9.4.1",
+    "@types/node": "^18.7.15",
+    "commitizen": "^4.2.5",
+    "commitlint-gitlab-ci": "^0.0.4",
+    "conventional-changelog-conventionalcommits": "^5.0.0",
+    "husky": "^8.0.1",
+    "semantic-release": "^19.0.5",
+    "typescript": "~4.8.2"
+  },
+  "engines": {
+    "node": ">= 14.19.1",
+    "npm": ">= 7.0.0"
+  },
+  "engineStrict": true
+}

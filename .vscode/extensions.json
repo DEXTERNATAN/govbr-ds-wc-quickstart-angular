@@ -1,7 +1,3 @@
 {
-  "recommendations": [
-    "eamodio.gitlens",
-    "Gruntfuggly.todo-tree",
-    "vivaxy.vscode-conventional-commits"
-  ]
+  "recommendations": ["eamodio.gitlens", "Gruntfuggly.todo-tree"]
 }

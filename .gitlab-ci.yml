@@ -139,7 +139,7 @@ publish:
   before_script:
     - apk --no-cache add git zip
   script:
-    - npx semantic-release --debug
+    - npx semantic-release
   only:
     - main
     - /^[0-9]+(\.([0-9]|x))+$/

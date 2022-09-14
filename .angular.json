@@ -108,5 +108,8 @@
       }
     }
   },
-  "defaultProject": "webcomponents-angular-demo"
+  "defaultProject": "webcomponents-angular-demo",
+  "cli": {
+    "analytics": false
+  }
 }

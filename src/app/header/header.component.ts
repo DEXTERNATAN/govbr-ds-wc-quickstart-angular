@@ -9,7 +9,7 @@ export class HeaderComponent {
   subtitle = "Baseado na v1.3.0 do @govbr-ds/webcomponents";
 
   image = {
-    src: "/assets/govbr-logo.png",
+    src: "assets/govbr-logo.png",
     alt: "logo",
   };
 

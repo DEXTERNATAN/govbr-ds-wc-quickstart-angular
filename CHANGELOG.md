@@ -1,3 +1,10 @@
+## [1.1.3](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/compare/v1.1.2...v1.1.3) (2022-09-19)
+
+
+### Bug Fixes
+
+* padronização da estrutura HTML ([3c445d4](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/commit/3c445d4a92c503281e1fc08fcf7a0181c9cfcd60))
+
 ## [1.1.2](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/compare/v1.1.1...v1.1.2) (2022-09-19)
 
 

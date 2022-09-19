@@ -1,27 +1,25 @@
-<header>
-  <br-header
-    [image]="image.src"
-    [alt]="image.alt"
-    [title]="title"
-    [subtitle]="subtitle"
-    has-menu
-  >
-    <div slot="headerMenu">
-      <br-button
-        role="option"
-        circle
-        density="small"
-        aria-label="Menu"
-        icon="bars"
-        data-toggle="menu"
-        data-target="#main-navigation"
-      ></br-button>
-    </div>
-    <div slot="headerAction">
-      <br-header-action
-        title-links="Acesso Rápido"
-        [listLinks]="links"
-      ></br-header-action>
-    </div>
-  </br-header>
-</header>
+<br-header
+  [image]="image.src"
+  [alt]="image.alt"
+  [title]="title"
+  [subtitle]="subtitle"
+  has-menu
+>
+  <div slot="headerMenu">
+    <br-button
+      role="option"
+      circle
+      density="small"
+      aria-label="Menu"
+      icon="bars"
+      data-toggle="menu"
+      data-target="#main-navigation"
+    ></br-button>
+  </div>
+  <div slot="headerAction">
+    <br-header-action
+      title-links="Acesso Rápido"
+      [listLinks]="links"
+    ></br-header-action>
+  </div>
+</br-header>

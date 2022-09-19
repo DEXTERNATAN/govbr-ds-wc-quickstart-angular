@@ -1,39 +1,26 @@
-<app-header></app-header>
+<header>
+  <app-header></app-header>
+</header>
 <main class="d-flex flex-fill mb-5" id="main">
   <div class="container-lg d-flex">
     <div class="row">
-      <app-menu></app-menu>
+      <menu class="col-sm-4 col-lg-2">
+        <app-menu></app-menu>
+      </menu>
       <div class="col mb-5">
         <app-breadcrumb></app-breadcrumb>
         <div class="main-content pl-sm-3 mt-4" id="main-content">
           <h1>Lorem ipsum</h1>
-          <div class="br-message warning" role="alert">
-            <div class="icon">
-              <i class="fas fa-exclamation-triangle fa-lg" aria-hidden="true">
-              </i>
-            </div>
-            <div class="content">
-              <span class="message-title">Atenção.</span>
-              <span class="message-body">
-                Esse projeto NÃO ESTÁ PRONTO PARA PRODUÇÃO! Sinta-se à vontade
-                para usá-lo como ponto de partida para seu projeto ou como
-                exemplo de uso, mas tenha em mente que configurações, melhorias
-                e correções precisarão ser feitos.
-                <hr />
-                Para mais informações acesse o
-                <a href="https://gov.br/ds" target="_blank">nosso site</a>.
-              </span>
-            </div>
-            <div class="close">
-              <button
-                class="br-button circle small"
-                type="button"
-                aria-label="Fechar"
-              >
-                <i class="fas fa-times" aria-hidden="true"></i>
-              </button>
-            </div>
-          </div>
+          <br-message state="warning" title="Atenção." show-icon>
+            Esse projeto NÃO ESTÁ PRONTO PARA PRODUÇÃO! Sinta-se à vontade para
+            usá-lo como ponto de partida para seu projeto ou como exemplo de
+            uso, mas tenha em mente que configurações, melhorias e correções
+            precisarão ser feitos.
+            <hr />
+            Para mais informações acesse o
+            <a href="https://gov.br/ds" target="_blank"> nosso site </a>
+            .
+          </br-message>
           <div>
             <p>
               Blanditiis, qui? Obcaecati consequuntur delectus pariatur beatae
@@ -53,4 +40,6 @@
     </div>
   </div>
 </main>
-<app-footer></app-footer>
+<footer>
+  <app-footer></app-footer>
+</footer>

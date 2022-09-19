@@ -80,5 +80,8 @@
       }
     }
   },
-  "defaultProject": "webcomponents-quickstart-angular"
+  "defaultProject": "webcomponents-quickstart-angular",
+  "cli": {
+    "analytics": false
+  }
 }

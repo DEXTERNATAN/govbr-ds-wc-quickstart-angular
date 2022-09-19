@@ -1,3 +1,12 @@
+## [1.1.2](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/compare/v1.1.1...v1.1.2) (2022-09-19)
+
+
+### Bug Fixes
+
+* ajustes na estrutura html ([7fddbac](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/commit/7fddbac6cbcbe9dbcaa4b553a4af99a80430db9b))
+* **menu:** corrige largura do menu ao abrir/fechar ([e93de19](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/commit/e93de19be03a1d0953f0a390751ad5d974096504))
+* corrige links do breadcrumb ([55dcee1](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/commit/55dcee1c12d0d811d534b5dd997558185339bb90))
+
 ## [1.1.1](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/compare/v1.1.0...v1.1.1) (2022-09-15)
 
 

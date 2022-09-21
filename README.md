@@ -2,7 +2,7 @@
 
 ## Descrição
 
-Projeto exemplificando o uso da [biblioteca de Web Components do GOVBR-DS](https://gov.br/ds/webcomponents 'Biblioteca de Web Components do GOVBR-DS') em projetos [Angular](https://angular.io/ 'Angular').
+Projeto exemplificando o uso da [biblioteca de Web Components do GOVBR-DS](https://gov.br/ds/webcomponents "Biblioteca de Web Components do GOVBR-DS") em projetos [Angular](https://angular.io/ "Angular").
 
 [Visualização ao vivo](https://govbr-ds.gitlab.io/dev/wbc/govbr-ds-wbc-quickstart-angular/main/).
 
@@ -10,28 +10,28 @@ Projeto exemplificando o uso da [biblioteca de Web Components do GOVBR-DS](https
 
 Esse projeto é desenvolvido usando:
 
-1. [Biblioteca de Web Components do GOVBR-DS](https://gov.br/ds/webcomponents 'Biblioteca de Web Components do GOVBR-DS')
-1. [Angular](https://angular.io/ 'Angular')
+1. [Biblioteca de Web Components do GOVBR-DS](https://gov.br/ds/webcomponents "Biblioteca de Web Components do GOVBR-DS")
+1. [Angular](https://angular.io/ "Angular")
 
-> Esse projeto foi construído usando uma versão nova do Angular, mas a [Biblioteca de Web Components do GOVBR-DS](https://gov.br/ds/webcomponents 'Biblioteca de Web Components do GOVBR-DS') funciona com versões mais antigas.
+> Esse projeto foi construído usando uma versão nova do Angular, mas a [Biblioteca de Web Components do GOVBR-DS](https://gov.br/ds/webcomponents "Biblioteca de Web Components do GOVBR-DS") funciona com versões mais antigas.
 
-Para saber mais detalhes sobre Web Components sugerimos que consulte o [MDN](https://developer.mozilla.org/pt-BR/docs/Web/Web_Components 'Web Components | MDN').
+Para saber mais detalhes sobre Web Components sugerimos que consulte o [MDN](https://developer.mozilla.org/pt-BR/docs/Web/Web_Components "Web Components | MDN").
 
 ## Dependências
 
 As principais dependências do projeto são:
 
-1. [GOVBR-DS](https://www.gov.br/ds/ 'GOVBR-DS')
+1. [GOVBR-DS](https://www.gov.br/ds/ "GOVBR-DS")
 
 1. [Web Components](https://gov.br/ds/webcomponents/ "Web Components GOVBR-DS")
 
-1. [Font Awesome](https://fontawesome.com/ 'Font Awesome')
+1. [Font Awesome](https://fontawesome.com/ "Font Awesome")
 
-1. [Fonte Rawline](https://www.cdnfonts.com/rawline.font/ 'Fonte Rawline')
+1. [Fonte Rawline](https://www.cdnfonts.com/rawline.font/ "Fonte Rawline")
 
-1. [Angular](https://angular.io/guide/setup-local 'Angular')
+1. [Angular](https://angular.io/guide/setup-local "Angular")
 
-> O fontawesome e a fonte rawline podem ser importadas de um CDN. Consulte a documentação no site do [GOVBR-DS](https://www.gov.br/ds/ 'GOVBR-DS') para mais detalhes.
+> O fontawesome e a fonte rawline podem ser importadas de um CDN. Consulte a documentação no site do [GOVBR-DS](https://www.gov.br/ds/ "GOVBR-DS") para mais detalhes.
 
 ## Como executar o projeto?
 
@@ -45,7 +45,7 @@ npm run serve
 
 Após isso o projeto vai estar disponível no endereço `http://localhost:4200/`.
 
-OBS: Para contribuir com o projeto o clone pode não ser a maneira correta. Por favor consulte nossos guias sobre como contribuir na nossa [wiki](https://govbr-ds.gitlab.io/govbr-ds-wiki/ 'Wiki').
+OBS: Para contribuir com o projeto o clone pode não ser a maneira correta. Por favor consulte nossos guias sobre como contribuir na nossa [wiki](https://govbr-ds.gitlab.io/govbr-ds-wiki/ "Wiki").
 
 ### Explicando
 
@@ -90,22 +90,22 @@ Inclua no index.html aplicação as seguintes dependências:
 -   Importe o `CUSTOM_ELEMENTS_SCHEMA` de `@angular/core`.
 
 ```typescript
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 ```
 
 -   Adicione os `schemas` e inclua o `CUSTOM_ELEMENTS_SCHEMA`.
 
 ```typescript
-schemas: [CUSTOM_ELEMENTS_SCHEMA]
+schemas: [CUSTOM_ELEMENTS_SCHEMA];
 ```
 
 -   O código final deve ficar como abaixo:
 
 ```typescript
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
-import { BrowserModule } from '@angular/platform-browser'
-import { AppRoutingModule } from './app-routing.module'
-import { AppComponent } from './app.component'
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
 
 @NgModule({
     declarations: [AppComponent],
@@ -118,7 +118,7 @@ import { AppComponent } from './app.component'
 export class AppModule {}
 ```
 
-Agora os elementos customizados e importados da [biblioteca de Web Components do GOVBR-DS](https://gov.br/ds/webcomponents 'Biblioteca de Web Components do GOVBR-DS') podem ser usados conforme suas documentações.
+Agora os elementos customizados e importados da [biblioteca de Web Components do GOVBR-DS](https://gov.br/ds/webcomponents "Biblioteca de Web Components do GOVBR-DS") podem ser usados conforme suas documentações.
 
 ## Precisa de ajuda?
 
@@ -126,25 +126,25 @@ Agora os elementos customizados e importados da [biblioteca de Web Components do
 
 Use nossos canais abaixo para obter tirar suas dúvidas:
 
--   Site do GOVBR-DS <https://www.gov.br/ds/>
+-   Site do GOVBR-DS [http://gov.br/ds](http://gov.br/ds)
 
--   Web Components <https://gov.br/ds/webcomponents>
+-   Web Components [https://gov.br/ds/webcomponents/](https://gov.br/ds/webcomponents/)
 
--   Pelo nosso email <govbr-ds@serpro.gov.br>
+-   Pelo nosso email [govbr-ds@serpro.gov.br](govbr-ds@serpro.gov.br)
 
--   Usando nosso canal no discord <https://discord.gg/U5GwPfqhUP>
+-   Usando nosso canal no discord [https://discord.gg/U5GwPfqhUP](https://discord.gg/U5GwPfqhUP)
 
 ## Como contribuir?
 
-Por favor verifique nossos guias de [como contribuir](./CONTRIBUTING.md 'Como contribuir?').
+Por favor verifique nossos guias de [como contribuir](./CONTRIBUTING.md "Como contribuir?").
 
 ### Commits
 
-Nesse projeto usamos um padrão para branches e commits. Por favor observe a documentação na nossa [wiki](https://govbr-ds.gitlab.io/govbr-ds-wiki/ 'Wiki') para aprender sobre os nossos padrões.
+Nesse projeto usamos um padrão para branches e commits. Por favor observe a documentação na nossa [wiki](https://govbr-ds.gitlab.io/govbr-ds-wiki/ "Wiki") para aprender sobre os nossos padrões.
 
 ## Créditos
 
-Os Web Components do GOVBR-DS são criados pelo [SERPRO](https://www.serpro.gov.br/ 'SERPRO | Serviço Federal de Processamento de Dados') e [Dataprev](https://www.dataprev.gov.br/ 'Dataprev | Empresa de Tecnologia e Informações da Previdência') juntamente com a participação da comunidade.
+Os Web Components do GOVBR-DS são criados pelo [SERPRO](https://www.serpro.gov.br/ "SERPRO | Serviço Federal de Processamento de Dados") e [Dataprev](https://www.dataprev.gov.br/ "Dataprev | Empresa de Tecnologia e Informações da Previdência") juntamente com a participação da comunidade.
 
 ## Licença
 

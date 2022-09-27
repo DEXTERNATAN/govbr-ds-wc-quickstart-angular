@@ -1,6 +1,11 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-if ! git diff HEAD^ HEAD --exit-code -- ./package-lock.json; then
+function changed {
+  git diff --name-only HEAD@{1} HEAD | grep "^$1" >/dev/null 2>&1
+}
+
+if changed 'package-lock.json'; then
+  echo "📦 Identificamos mudanças no package-lock.json. Rodando o 'npm install' para atualizar as dependências..."
   npm install
 fi

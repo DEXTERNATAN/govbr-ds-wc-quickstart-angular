@@ -136,7 +136,11 @@ Use nossos canais abaixo para obter tirar suas dúvidas:
 
 ## Como contribuir?
 
-Por favor verifique nossos guias de [como contribuir](./CONTRIBUTING.md "Como contribuir?").
+Antes de abrir um Merge Request tenha em mente algumas informações:
+
+-   Esse é um projeto opensource e contribuições são bem-vindas.
+-   Para facilitar a aprovação da sua contribuição, escolha um título curto, simples e explicativo para o MR, e siga os padrões da nossa [wiki](https://govbr-ds.gitlab.io/govbr-ds-wiki/ "Wiki").
+-   Quer contribuir com o projeto? Confira o nosso guia [como contribuir](./CONTRIBUTING.md "Como contribuir?").
 
 ### Commits
 

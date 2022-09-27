@@ -20,7 +20,7 @@ stages:
   # Roda os testes e lints definidos pelo time
   - Qualidade
   # Build do storybook e publica no gitpages
-  - Storybook
+  - Pages
   # Executa o semantic-release conforme o .releaserc.yml
   - Release
 
@@ -107,7 +107,7 @@ Commits:
     - npx commitlint-gitlab-ci -x @govbr-ds/commit-config > report-commitlint.txt
 
 pages:
-  stage: pages
+  stage: Pages
   environment:
     name: production
   allow_failure: false

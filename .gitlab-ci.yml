@@ -7,21 +7,22 @@ include:
 image: node:16-alpine
 
 stages:
-  # Inicia o processo
+  # Inicia o processo para gerar uma build, testar, publicar no gitpages e gerar release com o semantic-release
   # Em branches que geram releases precisa de autorização para iniciar todo o pipeline
-  - start
+  - Iniciar release
   # Instala as dependências
-  - preparation
-  # Roda as validações disponibilizadas pelo gitlab
-  # Inicia logo após o 'install'
-  - quality:gitlab
+  - Dependências
+  # Gera um build do projeto para garantir que o arquivo final está sendo gerado
+  - Build
+  # Roda as validações configuradas no gitlab (SAST, secret detection, etc...)
+  # Para ver as configurações: Project > Security & Compliance > Policies
+  - Validações Gitlab
   # Roda os testes e lints definidos pelo time
-  # Inicia logo após o 'install'
-  - lint
-  # Publica no gitpages
-  - pages
+  - Qualidade
+  # Build do storybook e publica no gitpages
+  - Storybook
   # Executa o semantic-release conforme o .releaserc.yml
-  - release
+  - Release
 
 cache:
   paths:
@@ -31,87 +32,85 @@ variables:
   SAST_EXCLUDED_PATHS: spec, test, tests, tmp, .husky, .storybook, .vscode, coverage, dist, node_modules, package-lock.json, *.spec.js, **/*.spec.js.snap
   SECRET_DETECTION_HISTORIC_SCAN: "false"
   SECRET_DETECTION_EXCLUDED_PATHS: spec, test, tests, tmp, .husky, .vscode, coverage, dist, node_modules
+  SECURE_LOG_LEVEL: error
 
-init:
-  stage: start
+Iniciar:
+  stage: Iniciar release
   environment:
     name: production
   when: manual
   allow_failure: false
   script:
-    - echo 'Iniciando o processo de publicação no gitpages, geração de changelog, tags e release...'
+    - echo 'Iniciando pipeline.'
   only:
     - main
+    - next
+    - next-major
     - /^[0-9]+(\.([0-9]|x))+$/
     - /^[0-9]+(\.([0-9]|x))+(-(rc|beta|alpha))?$/
     - /(rc|beta|alpha)$/
 
-install:
-  stage: preparation
-  when: on_success
+Instalar dependências:
+  stage: Dependências
   allow_failure: false
-  needs: ["init"]
   artifacts:
     paths:
       - node_modules
     expire_in: 1 day
   script:
     - apk --no-cache add git
-    # TODO: remover o --force após a atualização do web components
-    - npm install --force
+    - npm install
   only:
     - main
+    - next
+    - next-major
     - merge_requests
     - /^[0-9]+(\.([0-9]|x))+$/
     - /^[0-9]+(\.([0-9]|x))+(-(rc|beta|alpha))?$/
     - /(rc|beta|alpha)$/
 
 dependency_scanning:
-  stage: quality:gitlab
-  when: on_success
+  stage: Validações Gitlab
+  allow_failure: false
   script:
     - echo 'Security/Dependency-Scanning.gitlab-ci.yml'
 
 license_scanning:
-  stage: quality:gitlab
-  when: on_success
+  stage: Validações Gitlab
+  allow_failure: false
   script:
     - echo 'Security/License-Scanning.gitlab-ci.yml'
 
 sast:
-  stage: quality:gitlab
-  when: on_success
+  stage: Validações Gitlab
+  allow_failure: false
   script:
     - echo 'Security/SAST.gitlab-ci.yml'
 
 secret_detection:
-  stage: quality:gitlab
-  when: on_success
+  stage: Validações Gitlab
+  allow_failure: false
   script:
     - echo 'Security/Secret-Detection.gitlab-ci.yml'
 
-lint:commit:
-  stage: lint
-  when: on_success
-  needs: ["install"]
+Commits:
+  stage: Qualidade
+  allow_failure: false
   artifacts:
     when: always
     paths:
       - report-commitlint.txt
-    expire_in: 1 month
+    expire_in: 1 week
   before_script:
     - apk --no-cache add git
   script:
-    - echo "${CI_COMMIT_MESSAGE}" | npx commitlint > report-commitlint.txt
-  only:
-    - main
-    - merge_requests
-    - /^[0-9]+(\.([0-9]|x))+$/
-    - /^[0-9]+(\.([0-9]|x))+(-(rc|beta|alpha))?$/
-    - /(rc|beta|alpha)$/
+    - npx commitlint-gitlab-ci -x @govbr-ds/commit-config > report-commitlint.txt
 
 pages:
   stage: pages
+  environment:
+    name: production
+  allow_failure: false
   artifacts:
     paths:
       - public
@@ -124,14 +123,16 @@ pages:
     - mv dist "public/$CI_COMMIT_REF_NAME"
   only:
     - main
-    - merge_requests
+    - next
+    - next-major
     - /^[0-9]+(\.([0-9]|x))+$/
     - /^[0-9]+(\.([0-9]|x))+(-(rc|beta|alpha))?$/
     - /(rc|beta|alpha)$/
 
-publish:
-  stage: release
-  when: on_success
+Semantic Release:
+  stage: Release
+  environment:
+    name: production
   artifacts:
     paths:
       - dist
@@ -142,5 +143,8 @@ publish:
     - npx semantic-release
   only:
     - main
+    - next
+    - next-major
     - /^[0-9]+(\.([0-9]|x))+$/
     - /^[0-9]+(\.([0-9]|x))+(-(rc|beta|alpha))?$/
+    - /(rc|beta|alpha)$/

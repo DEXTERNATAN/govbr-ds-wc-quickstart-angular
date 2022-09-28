@@ -41,6 +41,8 @@ Iniciar:
   when: manual
   allow_failure: false
   script:
+    - echo '--------------'
+    - echo $CI_PROJECT_PATH_SLUG
     - echo 'Iniciando pipeline.'
   only:
     - main
@@ -117,10 +119,10 @@ pages:
   before_script:
     - npm install -g @angular/cli@14.1.1
   script:
+    - rm -rf public
     - mkdir -p public
-    - rm -rf "public/$CI_COMMIT_REF_NAME"
-    - ng build --base-href="/dev/wbc/govbr-ds-wbc-quickstart-angular/$CI_COMMIT_REF_NAME/"
-    - mv dist "public/$CI_COMMIT_REF_NAME"
+    - ng build --base-href="/dev/wbc/govbr-ds-wbc-quickstart-angular/"
+    - mv dist public
   only:
     - main
     - next

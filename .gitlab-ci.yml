@@ -41,8 +41,6 @@ Iniciar:
   when: manual
   allow_failure: false
   script:
-    - echo '--------------'
-    - echo $CI_PROJECT_PATH_SLUG
     - echo 'Iniciando pipeline.'
   only:
     - main
@@ -122,7 +120,7 @@ pages:
     - rm -rf public
     - mkdir -p public
     - ng build --base-href="/dev/wbc/govbr-ds-wbc-quickstart-angular/"
-    - mv dist public
+    - mv dist/* public
   only:
     - main
     - next

@@ -120,7 +120,7 @@ pages:
     - rm -rf public
     - mkdir -p public
     - ng build --base-href="/dev/wbc/govbr-ds-wbc-quickstart-angular/"
-    - mv dist/ public
+    - mv dist/* public
   only:
     - main
 

@@ -1,3 +1,10 @@
+## [1.1.4](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/compare/v1.1.3...v1.1.4) (2022-09-28)
+
+
+### Bug Fixes
+
+* atualiza @govbr-ds/webcomponents para 1.3.1 ([e22ceae](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/commit/e22ceaebb2f52af3f1c67c1008f075e7348f6438))
+
 ## [1.1.4-rc.1](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/compare/v1.1.3...v1.1.4-rc.1) (2022-09-27)
 
 

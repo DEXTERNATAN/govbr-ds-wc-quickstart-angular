@@ -37,6 +37,7 @@ plugins:
           - scope
   - - "@semantic-release/changelog"
   - - "@semantic-release/gitlab"
+    - milestones: ["GOVBR-DS-WBC-R02"]
   - - "@semantic-release/git"
     - assets:
         - package.json

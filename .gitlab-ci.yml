@@ -12,8 +12,6 @@ stages:
   - Iniciar release
   # Instala as dependências
   - Dependências
-  # Gera um build do projeto para garantir que o arquivo final está sendo gerado
-  - Build
   # Roda as validações configuradas no gitlab (SAST, secret detection, etc...)
   # Para ver as configurações: Project > Security & Compliance > Policies
   - Validações Gitlab
@@ -59,7 +57,7 @@ Instalar dependências:
     expire_in: 1 day
   script:
     - apk --no-cache add git
-    - npm install
+    - npm install --legacy-peer-deps
   only:
     - main
     - next
@@ -96,6 +94,7 @@ secret_detection:
 Commits:
   stage: Qualidade
   allow_failure: false
+  needs: ["Instalar dependências"]
   artifacts:
     when: always
     paths:

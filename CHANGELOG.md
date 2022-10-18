@@ -1,3 +1,12 @@
+# CHANGELOG
+
+## [1.1.5](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/compare/v1.1.4...v1.1.5) (18/10/2022)
+
+
+### :bug: Correções
+
+* remove tag menu obsoleta e atualiza deps ([81283af](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/commit/81283af5e07733e97a0aa9f7aced55e1a44b9255))
+
 ## [1.1.4](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/compare/v1.1.3...v1.1.4) (2022-09-28)
 
 

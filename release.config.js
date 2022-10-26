@@ -7,7 +7,6 @@ module.exports = {
     sharedConfig.plugins.releaseNotes,
     sharedConfig.plugins.changelog,
     sharedConfig.plugins.gitlab,
-    sharedConfig.plugins.npm,
     sharedConfig.plugins.git,
   ],
 };

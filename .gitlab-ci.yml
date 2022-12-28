@@ -1,36 +1,25 @@
 include:
-  - template: Security/Dependency-Scanning.gitlab-ci.yml
   - template: Security/License-Scanning.gitlab-ci.yml
-  - template: Security/SAST.gitlab-ci.yml
-  - template: Security/Secret-Detection.gitlab-ci.yml
+  - template: Verify/Browser-Performance.gitlab-ci.yml
+  - template: Verify/Accessibility.gitlab-ci.yml
+  - template: Code-Quality.gitlab-ci.yml
 
 image: node:16-alpine
 
 stages:
-  # Inicia o processo para gerar uma build, testar, publicar no gitpages e gerar release com o semantic-release
-  # Em branches que geram releases precisa de autorização para iniciar todo o pipeline
   - Iniciar release
-  # Instala as dependências
   - Dependências
-  # Roda as validações configuradas no gitlab (SAST, secret detection, etc...)
-  # Para ver as configurações: Project > Security & Compliance > Policies
-  - Validações Gitlab
-  # Roda os testes e lints definidos pelo time
+  - Build
+  - test
+  - performance
+  - accessibility
   - Qualidade
-  # Build do storybook e publica no gitpages
-  - Pages
-  # Executa o semantic-release conforme o .releaserc.yml
+  - Storybook
   - Release
 
 cache:
   paths:
     - node_modules/
-
-variables:
-  SAST_EXCLUDED_PATHS: spec, test, tests, tmp, .husky, .storybook, .vscode, coverage, dist, node_modules, package-lock.json, *.spec.js, **/*.spec.js.snap
-  SECRET_DETECTION_HISTORIC_SCAN: "false"
-  SECRET_DETECTION_EXCLUDED_PATHS: spec, test, tests, tmp, .husky, .vscode, coverage, dist, node_modules
-  SECURE_LOG_LEVEL: error
 
 Iniciar:
   stage: Iniciar release
@@ -42,11 +31,6 @@ Iniciar:
     - echo 'Iniciando pipeline.'
   only:
     - main
-    - next
-    - next-major
-    - /^[0-9]+(\.([0-9]|x))+$/
-    - /^[0-9]+(\.([0-9]|x))+(-(rc|beta|alpha))?$/
-    - /(rc|beta|alpha)$/
 
 Instalar dependências:
   stage: Dependências
@@ -60,50 +44,76 @@ Instalar dependências:
     - npm install --legacy-peer-deps
   only:
     - main
-    - next
-    - next-major
-    - merge_requests
-    - /^[0-9]+(\.([0-9]|x))+$/
-    - /^[0-9]+(\.([0-9]|x))+(-(rc|beta|alpha))?$/
-    - /(rc|beta|alpha)$/
-
-dependency_scanning:
-  stage: Validações Gitlab
-  allow_failure: false
-  script:
-    - echo 'Security/Dependency-Scanning.gitlab-ci.yml'
 
 license_scanning:
-  stage: Validações Gitlab
-  allow_failure: false
-  script:
-    - echo 'Security/License-Scanning.gitlab-ci.yml'
+  artifacts:
+    paths: [gl-license-management-report.json]
+    reports:
+      license_scanning: gl-license-management-report.json
+    expire_in: 1 week
+    expose_as: "Licenses"
 
-sast:
-  stage: Validações Gitlab
-  allow_failure: false
-  script:
-    - echo 'Security/SAST.gitlab-ci.yml'
+a11y:
+  variables:
+    a11y_urls: https://govbr-ds.gitlab.io/dev/wbc/govbr-ds-wbc
+  artifacts:
+    paths: [reports/gl-accessibility.json]
+    expire_in: 1 week
+    expose_as: "A11Y"
 
-secret_detection:
-  stage: Validações Gitlab
-  allow_failure: false
-  script:
-    - echo 'Security/Secret-Detection.gitlab-ci.yml'
+code_quality:
+  variables:
+    REPORT_FORMAT: html
+  artifacts:
+    paths: [gl-code-quality-report.html]
+    expire_in: 1 week
+    expose_as: "Code Quality"
+  rules:
+    - if: $CODE_QUALITY_DISABLED
+      when: never
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_TAG
+
+browser_performance:
+  variables:
+    URL: https://govbr-ds.gitlab.io/dev/wbc/govbr-ds-wbc/
+  artifacts:
+    paths: ["sitespeed-results/"]
+    expire_in: 1 week
+    expose_as: "Browser Performance"
 
 Commits:
   stage: Qualidade
-  allow_failure: false
-  needs: ["Instalar dependências"]
+  needs: ["Web Components"]
   artifacts:
     when: always
     paths:
       - report-commitlint.txt
     expire_in: 1 week
+    expose_as: "Commitlint"
   before_script:
     - apk --no-cache add git
   script:
-    - npx commitlint-gitlab-ci -x @govbr-ds/commit-config > report-commitlint.txt
+    - >
+      if [ "${CI_BUILD_BEFORE_SHA}" = "0000000000000000000000000000000000000000" ]; then
+        echo "commitlint from HEAD^"
+        npx commitlint -x @govbr-ds/commit-config -f HEAD^ > report-commitlint.txt
+      else
+        echo "commitlint from ${CI_BUILD_BEFORE_SHA}"
+        br=`git branch -r --contains ${CI_BUILD_BEFORE_SHA}`
+        if [ ! -n $br ]; then
+          npx commitlint -x @govbr-ds/commit-config -f HEAD^ > report-commitlint.txt
+        else
+          npx commitlint -x @govbr-ds/commit-config -f "${CI_BUILD_BEFORE_SHA}" > report-commitlint.txt
+        fi
+      fi
+  only:
+    - main
+    - next
+    - merge_requests
+    - /\d.(\d|x).(\d|x)(-alpha)?$/
+    - /alpha$/
 
 pages:
   stage: Pages
@@ -138,7 +148,5 @@ Semantic Release:
   only:
     - main
     - next
-    - next-major
-    - /^[0-9]+(\.([0-9]|x))+$/
-    - /^[0-9]+(\.([0-9]|x))+(-(rc|beta|alpha))?$/
-    - /(rc|beta|alpha)$/
+    - /\d.(\d|x).(\d|x)(-alpha)?$/
+    - /alpha$/

@@ -90,19 +90,9 @@ Commits:
     - /\d.(\d|x).(\d|x)(-alpha)?$/
     - /alpha$/
 
-Iniciar release:
-  stage: Iniciar release
-  environment:
-    name: production
-  when: manual
-  allow_failure: false
-  script:
-    - echo 'Iniciando pipeline.'
-  only:
-    - main
-
 Instalar dependências:
   stage: Dependências
+  when: manual
   allow_failure: false
   artifacts:
     paths:

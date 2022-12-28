@@ -92,6 +92,8 @@ Commits:
 
 Instalar dependências:
   stage: Dependências
+  environment:
+    name: production
   when: manual
   allow_failure: false
   artifacts:

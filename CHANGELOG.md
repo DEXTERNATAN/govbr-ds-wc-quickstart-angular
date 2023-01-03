@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## [1.2.0](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/compare/v1.1.5...v1.2.0) (03/01/2023)
+
+
+### :sparkles: Novidades
+
+* atualiza web componentes para 1.4.1 ([1ee9972](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/commit/1ee9972c71be103cc4e210c6fc34be48a307b89f))
+
+
+### :bug: Correções
+
+* texto sobre versão do wbc usada ([bf2e517](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/commit/bf2e5174681d9b85f54ab51e9698802dd185e9ab))
+
 ## [1.1.5](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/compare/v1.1.4...v1.1.5) (18/10/2022)
 
 

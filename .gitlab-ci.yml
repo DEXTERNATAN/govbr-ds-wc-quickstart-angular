@@ -69,26 +69,13 @@ Commits:
     - apk --no-cache add git
     - npm install @govbr-ds/commit-config
   script:
-    - >
-      if [ "${CI__BEFORE_SHA}" = "0000000000000000000000000000000000000000" ]; then
-        echo "commitlint from HEAD^"
-        npx commitlint -x @govbr-ds/commit-config -f HEAD^ > report-commitlint.txt
-      else
-        echo "commitlint from ${CI__BEFORE_SHA}"
-        br=`git branch -r --contains ${CI_BUILD_BEFORE_SHA}`
-        if [ ! -n $br ]; then
-          npx commitlint -x @govbr-ds/commit-config -f HEAD^ > report-commitlint.txt
-        else
-          npx commitlint -x @govbr-ds/commit-config -f "${CI_BUILD_BEFORE_SHA}" > report-commitlint.txt
-        fi
-      fi
+    - npx commitlint-gitlab-ci -x @govbr-ds/commit-config > report-commitlint.txt
 
 Instalar dependências:
   stage: Dependências
   environment:
     name: production
   when: manual
-  allow_failure: false
   artifacts:
     paths:
       - node_modules
@@ -106,7 +93,7 @@ pages:
   stage: Pages
   environment:
     name: production
-  allow_failure: false
+  needs: ["Instalar dependências"]
   artifacts:
     paths:
       - public
@@ -124,6 +111,7 @@ Semantic Release:
   stage: Release
   environment:
     name: production
+  needs: ["Instalar dependências"]
   artifacts:
     paths:
       - dist

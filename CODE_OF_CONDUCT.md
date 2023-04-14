@@ -6,4 +6,4 @@ Como pessoas participantes, colaboradoras e líderes, nós nos comprometemos a f
 
 Comprometemo-nos a agir e interagir de maneiras que contribuam para uma comunidade aberta, acolhedora, diversificada, inclusiva e saudável.
 
-[Veja nosso Código de Conduta completo](https://govbr-ds.gitlab.io/govbr-ds-wiki/comunidade/codigo-de-conduta/)
+[Veja nosso Código de Conduta completo](https://gov.br/ds/wiki/comunidade/codigo-de-conduta/)

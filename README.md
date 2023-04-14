@@ -45,7 +45,7 @@ npm run serve
 
 Após isso o projeto vai estar disponível no endereço `http://localhost:4200/`.
 
-OBS: Para contribuir com o projeto o clone pode não ser a maneira correta. Por favor consulte nossos guias sobre como contribuir na nossa [wiki](https://govbr-ds.gitlab.io/govbr-ds-wiki/ "Wiki").
+OBS: Para contribuir com o projeto o clone pode não ser a maneira correta. Por favor consulte nossos guias sobre como contribuir na nossa [wiki](https://gov.br/ds/wiki/ "Wiki").
 
 ### Explicando
 
@@ -139,12 +139,12 @@ Use nossos canais abaixo para obter tirar suas dúvidas:
 Antes de abrir um Merge Request tenha em mente algumas informações:
 
 -   Esse é um projeto opensource e contribuições são bem-vindas.
--   Para facilitar a aprovação da sua contribuição, escolha um título curto, simples e explicativo para o MR, e siga os padrões da nossa [wiki](https://govbr-ds.gitlab.io/govbr-ds-wiki/ "Wiki").
+-   Para facilitar a aprovação da sua contribuição, escolha um título curto, simples e explicativo para o MR, e siga os padrões da nossa [wiki](https://gov.br/ds/wiki/ "Wiki").
 -   Quer contribuir com o projeto? Confira o nosso guia [como contribuir](./CONTRIBUTING.md "Como contribuir?").
 
 ### Commits
 
-Nesse projeto usamos um padrão para branches e commits. Por favor observe a documentação na nossa [wiki](https://govbr-ds.gitlab.io/govbr-ds-wiki/ "Wiki") para aprender sobre os nossos padrões.
+Nesse projeto usamos um padrão para branches e commits. Por favor observe a documentação na nossa [wiki](https://gov.br/ds/wiki/ "Wiki") para aprender sobre os nossos padrões.
 
 ## Créditos
 

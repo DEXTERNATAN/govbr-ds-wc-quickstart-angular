@@ -47,11 +47,11 @@ Após isso o projeto vai estar disponível no endereço `http://localhost:4200/`
 
 OBS: Para contribuir com o projeto o clone pode não ser a maneira correta. Por favor consulte nossos guias sobre como contribuir na nossa [wiki](https://gov.br/ds/wiki/ "Wiki").
 
-### Explicando
+## Explicando
 
 Para usar os Web Components GOVBR-DS com o Angular é preciso seguir os seguintes passos:
 
-#### Configure o arquivo `angular.json`
+## Configure o arquivo `angular.json`
 
 Inclua as referências a biblioteca de Web Components e ao GOVBR-DS
 
@@ -68,9 +68,9 @@ Inclua as referências a biblioteca de Web Components e ao GOVBR-DS
     ]
 ```
 
-#### Inclua as dependências no index.html
+## Inclua as dependências no index.html
 
-Inclua no index.html aplicação as seguintes dependências:
+Inclua no index.html da aplicação as seguintes dependências:
 
 ```html
 <link
@@ -83,9 +83,9 @@ Inclua no index.html aplicação as seguintes dependências:
 />
 ```
 
-#### Adicione o suporte aos Web Components
+## Adicione o suporte aos Web Components
 
-##### app.module.ts
+## app.module.ts
 
 -   Importe o `CUSTOM_ELEMENTS_SCHEMA` de `@angular/core`.
 
@@ -120,6 +120,66 @@ export class AppModule {}
 
 Agora os elementos customizados e importados da [biblioteca de Web Components do GOVBR-DS](https://gov.br/ds/webcomponents "Biblioteca de Web Components do GOVBR-DS") podem ser usados conforme suas documentações.
 
+## Integração do ngModel e do FormGroup do Angular com os Web Components
+
+Os Web Components se comunicam por meio de propriedades e eventos personalizados, assim como o Angular. No entanto, se formos utilizar estes Web Components com um formulario Angular, ele não funcionaria muito bem quanto um `Custom Angular Form Control`. Nós não temos como utilizar a validação personalizada ou outras API(s) de formularios do Angular.
+
+Com a implementação de uma diretiva customizada podemos anexar a lógica da API(s) específica do Angular aos nossos Web Components.
+
+Fazendo o uso de diretivas do Angular, podemos aplicar a API de controle de formulário personalizado aos nossos componentes da web.
+
+Para ajudá-lo com essa questão criamos essa diretiva customizada. Não sendo necessária nenhuma implementação da parte que quem vai utilizar.
+
+A diretiva está localizada na pasta `src/app/directives/` com o nome `CustomValueAccessor.directives.ts` ela deve ser incluída no module da sua aplicação. Conforme o exemplo abaixo:
+
+```typescript
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { CustomValueAccessor } from "./directives/CustomValueAccessor.directives";
+
+@NgModule({
+    declarations: [AppComponent, CustomValueAccessor],
+    imports: [BrowserModule, AppRoutingModule],
+    bootstrap: [AppComponent],
+    schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+    ],
+})
+export class AppModule {}
+```
+
+Basta seguir os passos acima e poderá utilizar o ngModel e o FormControl em seus campos de formulários. Pois agora os web components do govbr já tem toda a API(s) de controle de formulários do Angular integrada em sua tag.
+
+## Utilizando web components com ngModel
+
+```html
+<br-input
+  id="input"
+  label="Sobrenome"
+  [value]="sobrenome"
+  type="text"
+  [placeholder]="sobrenome"
+  [(ngModel)]="sobrenome"
+></br-input>
+<p>{{ sobrenome }}</p>
+```
+
+## Utilizando Web components com Reactive Forms
+
+```html
+<br-input
+  id="counter"
+  label="Counter"
+  type="number"
+  [formControl]="counter"
+  (change)="saveRange($event)"
+></br-input>
+<p>valor do input: {{ counter.value }}</p>
+<p>Valid (min value 0): {{ counter.valid }}</p>
+```
+
 ## Precisa de ajuda?
 
 > Por favor **não** crie issues para fazer perguntas...
@@ -142,7 +202,7 @@ Antes de abrir um Merge Request tenha em mente algumas informações:
 -   Para facilitar a aprovação da sua contribuição, escolha um título curto, simples e explicativo para o MR, e siga os padrões da nossa [wiki](https://gov.br/ds/wiki/ "Wiki").
 -   Quer contribuir com o projeto? Confira o nosso guia [como contribuir](./CONTRIBUTING.md "Como contribuir?").
 
-### Commits
+## Commits
 
 Nesse projeto usamos um padrão para branches e commits. Por favor observe a documentação na nossa [wiki](https://gov.br/ds/wiki/ "Wiki") para aprender sobre os nossos padrões.
 

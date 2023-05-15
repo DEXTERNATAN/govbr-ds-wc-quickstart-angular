@@ -1,0 +1,37 @@
+<h2>Component html default with ngModel</h2>
+<div class="col-sm-10 col-lg-5">
+  <div class="br-input">
+    <label for="input-default">Nome</label>
+    <input
+      id="input"
+      label="Nome"
+      [value]="nome"
+      type="text"
+      [(ngModel)]="nome"
+    />
+    <p>{{ nome }}</p>
+  </div>
+</div>
+
+<h2>Web Component (ngModel)</h2>
+<p>Por algum motivo o bind no atributo value nao funciona</p>
+<br-input
+  id="input"
+  label="Sobrenome"
+  [value]="sobrenome"
+  type="text"
+  [placeholder]="sobrenome"
+  [(ngModel)]="sobrenome"
+></br-input>
+<p>{{ sobrenome }}</p>
+
+<h2>Angular Reactive Forms Component using Web Component (formControl)</h2>
+<br-input
+  id="counter"
+  label="Counter"
+  type="number"
+  [formControl]="counter"
+  (change)="saveRange($event)"
+></br-input>
+<p>valor do input: {{ counter.value }}</p>
+<p>Valid (min value 0): {{ counter.valid }}</p>

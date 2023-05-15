@@ -6,7 +6,9 @@ import { Component } from "@angular/core";
 })
 export class HeaderComponent {
   title = "Web Components GOVBR-DS -  Quickstart Angular";
-  subtitle = "Baseado na v1.4.1 do @govbr-ds/webcomponents";
+  subtitle = "Baseado na v1.5.0 do @govbr-ds/webcomponents";
+
+  imageSize = "medium";
 
   image = {
     src: "assets/govbr-logo.png",

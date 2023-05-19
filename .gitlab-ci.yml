@@ -4,7 +4,7 @@ include:
   - template: Verify/Accessibility.gitlab-ci.yml
   - template: Code-Quality.gitlab-ci.yml
 
-image: node:16-alpine
+image: node:18-alpine
 
 stages:
   - test

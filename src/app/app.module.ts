@@ -4,6 +4,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { BreadcrumbComponent } from "./breadcrumb/breadcrumb.component";
+import { CookiebarComponent } from "./cookiebar/cookiebar.component";
 import { CustomValueAccessor } from "./directives/CustomValueAccessor.directives";
 import { FooterComponent } from "./footer/footer.component";
 import { FormularioComponent } from "./formularios/formulario.component";
@@ -17,6 +18,7 @@ import { MessageComponent } from "./message/message.component";
   declarations: [
     AppComponent,
     BreadcrumbComponent,
+    CookiebarComponent,
     FooterComponent,
     HeaderComponent,
     MenuComponent,

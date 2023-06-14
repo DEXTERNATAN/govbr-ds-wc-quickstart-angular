@@ -4,7 +4,7 @@
 
 Projeto exemplificando o uso da [biblioteca de Web Components do GOVBR-DS](https://gov.br/ds/webcomponents "Biblioteca de Web Components do GOVBR-DS") em projetos [Angular](https://angular.io/ "Angular").
 
-[Visualização ao vivo](https://govbr-ds.gitlab.io/dev/wbc/govbr-ds-wbc-quickstart-angular/main/).
+[Visualização ao vivo](https://govbr-ds.gitlab.io/wbc/quickstarts/govbr-ds-wbc-quickstart-angular/main/).
 
 ## Tecnologias
 
@@ -36,7 +36,7 @@ As principais dependências do projeto são:
 ## Como executar o projeto?
 
 ```sh
-git clone git@gitlab.com:govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular.git
+git clone git@gitlab.com:govbr-ds/wbc/quickstarts/govbr-ds-wbc-quickstart-angular.git
 
 npm install
 

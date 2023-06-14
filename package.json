@@ -9,9 +9,9 @@
     "web components",
     "angular"
   ],
-  "homepage": "https://govbr-ds.gitlab.io/dev/wbc/govbr-ds-wbc-quickstart-angular",
-  "bugs": "https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/-/issues",
-  "repository": "gitlab:govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular.git",
+  "homepage": "https://govbr-ds.gitlab.io/wbc/quickstarts/govbr-ds-wbc-quickstart-angular",
+  "bugs": "https://gitlab.com/govbr-ds/wbc/quickstarts/govbr-ds-wbc-quickstart-angular/-/issues",
+  "repository": "gitlab:govbr-ds/wbc/quickstarts/govbr-ds-wbc-quickstart-angular.git",
   "license": "MIT",
   "author": "SERPRO <govbr-ds@serpro.gov.br> (http://serpro.gov.br/)",
   "contributors": [

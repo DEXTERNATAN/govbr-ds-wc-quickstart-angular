@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## [1.3.0](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/compare/v1.2.0...v1.3.0) (14/06/2023)
+
+
+### 📚 Documentação
+
+* atualiza url da wiki ([17a2091](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/commit/17a20912f7193ce0a0e77ae66de071c0555bcc40))
+
+
+### ✨ Novidades
+
+* **events:** adiciona diretiva para tratar change dos dados no angular ([faef212](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/commit/faef212208809b3dabb100141e47f72f9289ad70))
+* implementa uso do componente cookiebar ([19b1aa9](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/commit/19b1aa951a57ef9db1a5105060b8445f15ba5ff2))
+
 ## [1.2.0](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/compare/v1.1.5...v1.2.0) (03/01/2023)
 
 

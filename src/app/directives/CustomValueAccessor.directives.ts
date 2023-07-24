@@ -1,81 +1,111 @@
-import {
-  Directive,
-  ElementRef,
-  HostListener,
-  Renderer2,
-  forwardRef,
-} from "@angular/core";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+import { Directive, ElementRef, HostListener, Renderer2, forwardRef } from '@angular/core'
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
 
+/**
+ * Diretiva customizada para acessar e controlar o valor de um input.
+ */
 @Directive({
-  selector: "br-input",
+  selector: 'br-input',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CustomValueAccessor),
+      useExisting: forwardRef(() => CustomValueAccessorDirective),
       multi: true,
     },
   ],
 })
-export class CustomValueAccessor implements ControlValueAccessor {
-  constructor(private element: ElementRef, private renderer: Renderer2) {
-    this.onChange = () => {};
-    this.onTouched = () => {};
+export class CustomValueAccessorDirective implements ControlValueAccessor {
+  private onChange: (value: string) => void = () => {}
+  private onTouched: () => void = () => {}
+  private _value: string
+  public disabled = false
+
+  constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
+
+  /**
+   * Obtém o valor do campo.
+   */
+  public get value(): string {
+    return this._value
   }
 
-  onChange: (value: string) => void;
-  onTouched: () => void;
-
-  private _value: string;
-  disabled = false;
-
-  get value() {
-    return this._value;
-  }
-
-  set value(val) {
+  /**
+   * Define o valor do campo.
+   * @param val O valor a ser definido.
+   */
+  public set value(val: string) {
     if (val !== this._value) {
-      this._value = val;
-      this.onChange(this._value);
-      this.onTouched();
-
-      this.updateValue(val);
+      this._value = val
+      this.onChange(this._value)
+      this.onTouched()
+      this.updateValue(val)
     }
   }
 
-  private updateValue(value: string) {
-    this.element.nativeElement.value = value;
-    this.renderer.setProperty(this.element.nativeElement, "value", value);
+  private updateValue(value: string): void {
+    this.elementRef.nativeElement.value = value
+    this.renderer.setProperty(this.elementRef.nativeElement, 'value', value)
   }
 
-  writeValue(value: any): void {
-    this.value = value;
+  /**
+   * Registra uma função de retorno de chamada a ser chamada quando o valor do campo mudar.
+   * @param fn A função de retorno de chamada.
+   */
+  public registerOnChange(fn: (value: string) => void): void {
+    this.onChange = fn
   }
 
-  @HostListener("input", ["$event.detail"])
-  _handleIllyInput(value: string) {
-    this.value = value;
+  /**
+   * Registra uma função de retorno de chamada a ser chamada quando o campo for tocado.
+   * @param fn A função de retorno de chamada.
+   */
+  public registerOnTouched(fn: () => void): void {
+    this.onTouched = fn
   }
 
-  @HostListener("change", ["$event.detail"])
-  _handleIllyChange(value: string) {
-    this.onChange(value[0]);
+  /**
+   * Define o estado de desabilitado do campo.
+   * @param isDisabled Indica se o campo deve ser desabilitado.
+   */
+  public setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled
   }
 
-  @HostListener("blur")
-  _handleBlurEvent(el: any) {
-    this.onTouched();
+  /**
+   * Escreve um novo valor para o campo.
+   * @param value O novo valor a ser escrito.
+   */
+  public writeValue(value: any): void {
+    this.value = value
   }
 
-  registerOnChange(fn) {
-    this.onChange = fn;
+  /**
+   * Manipulador do evento de input.
+   * Atualiza o valor do campo quando ocorre o evento de input.
+   * @param value O valor do evento de input.
+   */
+  @HostListener('input', ['$event.detail'])
+  private handleInput(value: string): void {
+    this.value = value
   }
 
-  registerOnTouched(fn) {
-    this.onTouched = fn;
+  /**
+   * Manipulador do evento de change.
+   * Chama a função de retorno de chamada quando ocorre o evento de change.
+   * @param value O valor do evento de change.
+   */
+  @HostListener('change', ['$event.detail'])
+  private handleChange(value: string): void {
+    this.onChange(value[0])
   }
 
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
+  /**
+   * Manipulador do evento de blur.
+   * Chama a função de retorno de chamada quando ocorre o evento de blur.
+   * @param event O evento de blur.
+   */
+  @HostListener('blur')
+  private handleBlur(event: any): void {
+    this.onTouched()
   }
 }

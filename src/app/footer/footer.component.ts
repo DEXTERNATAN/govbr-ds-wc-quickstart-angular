@@ -1,22 +1,18 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core'
 
 @Component({
-  selector: "app-footer",
-  templateUrl: "./footer.component.html",
+  selector: 'app-footer',
+  templateUrl: './footer.component.html',
 })
 export class FooterComponent {
-  license =
-    "Todo o conteúdo deste site está publicado sob a licença CC0 1.0 Universal";
+  public license: string = 'Todo o conteúdo deste site está publicado sob a licença MIT'
+  public logo: Logo = {
+    url: 'https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/images/logo-negative.png',
+    description: 'Logo de exemplo',
+  }
+}
 
-  social = {
-    label: "Redes Sociais",
-    networks: [
-      {
-        href: "https://discord.gg/U5GwPfqhUP",
-        image: "assets/discord.svg",
-        description: "Discord",
-        target: "_blank",
-      },
-    ],
-  };
+interface Logo {
+  url: string
+  description: string
 }

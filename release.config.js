@@ -1,4 +1,4 @@
-const sharedConfig = require("@govbr-ds/release-config");
+const sharedConfig = require('@govbr-ds/release-config')
 
 module.exports = {
   branches: [...sharedConfig.branches],
@@ -6,7 +6,7 @@ module.exports = {
     sharedConfig.plugins.commitAnalyzer,
     sharedConfig.plugins.releaseNotes,
     sharedConfig.plugins.changelog,
-    sharedConfig.plugins.gitlab,
     sharedConfig.plugins.git,
+    sharedConfig.plugins.gitlab,
   ],
-};
+}

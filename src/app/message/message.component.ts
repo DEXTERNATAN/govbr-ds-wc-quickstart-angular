@@ -1,12 +1,23 @@
-import { Component, Input } from "@angular/core";
-import { AbstractControl } from "@angular/forms";
+import { Component, Input } from '@angular/core'
+import { AbstractControl } from '@angular/forms'
 
 @Component({
-  selector: "app-message",
-  templateUrl: "./message.component.html",
+  selector: 'app-message',
+  templateUrl: './message.component.html',
 })
 export class MessageComponent {
-  @Input() control: AbstractControl;
-  @Input() error: string;
-  @Input() message: string;
+  /**
+   * O controle associado ao campo de formulário.
+   */
+  @Input() control: AbstractControl
+
+  /**
+   * O erro específico relacionado ao campo de formulário.
+   */
+  @Input() error: string
+
+  /**
+   * A mensagem genérica relacionada ao campo de formulário.
+   */
+  @Input() message: string
 }

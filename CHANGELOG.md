@@ -1,25 +1,26 @@
 # CHANGELOG
 
-## [1.3.0](https://gitlab.com/govbr-ds/wbc/quickstarts/govbr-ds-wbc-quickstart-angular/compare/v1.2.0...v1.3.0) (14/06/2023)
+## [1.3.0](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/compare/v1.2.0...v1.3.0) (14/06/2023)
 
 ### 📚 Documentação
 
-*   atualiza url da wiki ([17a2091](https://gitlab.com/govbr-ds/wbc/quickstarts/govbr-ds-wbc-quickstart-angular/commit/17a20912f7193ce0a0e77ae66de071c0555bcc40))
+* atualiza url da wiki ([17a2091](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/commit/17a20912f7193ce0a0e77ae66de071c0555bcc40))
+
 
 ### ✨ Novidades
 
-*   **events:** adiciona diretiva para tratar change dos dados no angular ([faef212](https://gitlab.com/govbr-ds/wbc/quickstarts/govbr-ds-wbc-quickstart-angular/commit/faef212208809b3dabb100141e47f72f9289ad70))
-*   implementa uso do componente cookiebar ([19b1aa9](https://gitlab.com/govbr-ds/wbc/quickstarts/govbr-ds-wbc-quickstart-angular/commit/19b1aa951a57ef9db1a5105060b8445f15ba5ff2))
+* **events:** adiciona diretiva para tratar change dos dados no angular ([faef212](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/commit/faef212208809b3dabb100141e47f72f9289ad70))
+* implementa uso do componente cookiebar ([19b1aa9](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/commit/19b1aa951a57ef9db1a5105060b8445f15ba5ff2))
 
-## [1.2.0](https://gitlab.com/govbr-ds/wbc/quickstarts/govbr-ds-wbc-quickstart-angular/compare/v1.1.5...v1.2.0) (03/01/2023)
+## [1.2.0](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/compare/v1.1.5...v1.2.0) (03/01/2023)
 
 ### :sparkles: Novidades
 
-*   atualiza web componentes para 1.4.1 ([1ee9972](https://gitlab.com/govbr-ds/wbc/quickstarts/govbr-ds-wbc-quickstart-angular/commit/1ee9972c71be103cc4e210c6fc34be48a307b89f))
+* atualiza web componentes para 1.4.1 ([1ee9972](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/commit/1ee9972c71be103cc4e210c6fc34be48a307b89f))
 
 ### :bug: Correções
 
-*   texto sobre versão do wbc usada ([bf2e517](https://gitlab.com/govbr-ds/wbc/quickstarts/govbr-ds-wbc-quickstart-angular/commit/bf2e5174681d9b85f54ab51e9698802dd185e9ab))
+* texto sobre versão do wbc usada ([bf2e517](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/commit/bf2e5174681d9b85f54ab51e9698802dd185e9ab))
 
 ## [1.1.5](https://gitlab.com/govbr-ds/wbc/quickstarts/govbr-ds-wbc-quickstart-angular/compare/v1.1.4...v1.1.5) (18/10/2022)
 
@@ -69,4 +70,8 @@
 
 ### Features
 
+<<<<<<< HEAD
 *   atualizado para versão 1.2.0 dos wbc ([a4c14aa](https://gitlab.com/govbr-ds/wbc/quickstarts/govbr-ds-wbc-quickstart-angular/commit/a4c14aa2ffb137ad40b3c428bca4a74ee65d8179))
+=======
+- atualizado para versão 1.2.0 dos wbc ([a4c14aa](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/commit/a4c14aa2ffb137ad40b3c428bca4a74ee65d8179))
+>>>>>>> 7a20eea (wip: inicio do showcase do signin)

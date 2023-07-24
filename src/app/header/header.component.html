@@ -2,9 +2,12 @@
   [image]="image.src"
   [alt]="image.alt"
   [title]="title"
-  [subtitle]="subtitle"
+  [signature]="signature"
   has-menu
-  [imageSize]="imageSize"
+  container-fluid="true"
+  has-title-link="true"
+  title-link-url="/"
+  id="header"
 >
   <div slot="headerMenu">
     <br-button
@@ -12,15 +15,18 @@
       circle
       density="small"
       aria-label="Menu"
-      icon="bars"
+      [icon]="isOpen ? 'times' : 'bars'"
       data-toggle="menu"
       data-target="#main-navigation"
+      (click)="toggleMenu()"
     ></br-button>
   </div>
-  <div slot="headerAction">
-    <br-header-action
-      title-links="Acesso Rápido"
-      [listLinks]="links"
-    ></br-header-action>
-  </div>
+  <br-header-action
+    slot="headerAction"
+    title-links="Bibliotecas de componentes"
+    [listLinks]="links"
+    title-functions="Links relacionados"
+    [listFunctions]="functions"
+  >
+  </br-header-action>
 </br-header>

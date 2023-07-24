@@ -20,9 +20,16 @@
   "scripts": {
     "build": "ng build",
     "commit": "git-cz",
+    "lint:md": "markdownlint --fix **/*.md -d -c .markdownlint.yml",
     "ng": "ng",
-    "prepare": "husky install",
+    "prepare": "chmod +x ./node_modules/husky/lib/bin.js && husky install",
     "start": "ng serve --host 0.0.0.0"
+  },
+  "lint-staged": {
+    "*.md": [
+      "markdownlint -d -c .markdownlint.yml --fix **/*.md",
+      "prettier --write"
+    ]
   },
   "config": {
     "commitizen": {
@@ -34,12 +41,13 @@
     "@angular/common": "^15.0.4",
     "@angular/compiler": "^15.0.4",
     "@angular/core": "^15.0.4",
+    "@angular/elements": "^15.0.4",
     "@angular/forms": "^15.0.4",
     "@angular/platform-browser": "^15.0.4",
     "@angular/platform-browser-dynamic": "^15.0.4",
     "@angular/router": "^15.0.4",
-    "@govbr-ds/core": "^3.2.0",
-    "@govbr-ds/webcomponents": "^1.6.0",
+    "@govbr-ds/core": "^3.3.1",
+    "@govbr-ds/webcomponents": "^1.8.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.4.1",
     "zone.js": "~0.12.0"
@@ -52,12 +60,10 @@
     "@govbr-ds/release-config": "latest",
     "@types/node": "^18.11.18",
     "git-pull-run": "^1.4.0",
-    "husky": "^8.0.2",
+    "husky": "^8.0.3",
+    "lint-staged": "13.2.3",
+    "markdownlint-cli": "0.35.0",
+    "prettier": "^2.8.8",
     "typescript": "~4.8.4"
-  },
-  "engines": {
-    "node": ">= 14.19.1",
-    "npm": ">= 7.0.0"
-  },
-  "engineStrict": true
+  }
 }

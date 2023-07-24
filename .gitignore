@@ -3,3 +3,4 @@ node_modules
 public
 dist
 report-commitlint.txt
+report-markdownlint.txt

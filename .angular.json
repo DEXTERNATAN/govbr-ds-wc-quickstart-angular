@@ -27,12 +27,8 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": [
-              "node_modules/@govbr-ds/core/dist/core.min.css"
-            ],
-            "scripts": [
-              "node_modules/@govbr-ds/webcomponents/dist/webcomponents.umd.min.js"
-            ]
+            "styles": ["node_modules/@govbr-ds/core/dist/core.min.css"],
+            "scripts": ["node_modules/@govbr-ds/webcomponents/dist/webcomponents.umd.min.js"]
           },
           "configurations": {
             "production": {

@@ -1,61 +1,38 @@
 include:
-  - template: Security/License-Scanning.gitlab-ci.yml
-  - template: Verify/Browser-Performance.gitlab-ci.yml
-  - template: Verify/Accessibility.gitlab-ci.yml
-  - template: Code-Quality.gitlab-ci.yml
+  - template: Jobs/Dependency-Scanning.gitlab-ci.yml
 
 image: node:18-alpine
-
-stages:
-  - test
-  - performance
-  - accessibility
-  - Qualidade
-  - Dependências
-  - Pages
-  - Release
 
 cache:
   paths:
     - node_modules/
 
-license_scanning:
-  artifacts:
-    paths: [gl-license-management-report.json]
-    reports:
-      license_scanning: gl-license-management-report.json
-    expire_in: 1 week
-    expose_as: "Licenses"
+stages:
+  - Qualidade
+  - Dependências
+  - test
+  - Pages
+  - Release
 
-a11y:
-  variables:
-    a11y_urls: https://govbr-ds.gitlab.io/dev/wbc/govbr-ds-wbc
+Markdown:
+  stage: Qualidade
   artifacts:
-    paths: [reports/gl-accessibility.json]
+    when: always
+    paths:
+      - report-markdownlint.txt
     expire_in: 1 week
-    expose_as: "A11Y"
-
-code_quality:
-  variables:
-    REPORT_FORMAT: html
-  artifacts:
-    paths: [gl-code-quality-report.html]
-    expire_in: 1 week
-    expose_as: "Code Quality"
-  rules:
-    - if: $CODE_QUALITY_DISABLED
-      when: never
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-    - if: $CI_COMMIT_TAG
-
-browser_performance:
-  variables:
-    URL: https://govbr-ds.gitlab.io/dev/wbc/govbr-ds-wbc-quickstart-angular/
-  artifacts:
-    paths: ["sitespeed-results/"]
-    expire_in: 1 week
-    expose_as: "Browser Performance"
+    expose_as: "Markdownlint Report"
+  before_script:
+    - apk --no-cache add
+    - npm i -g markdownlint-cli
+  script:
+    - markdownlint '**/*.md' -o report-markdownlint.txt
+  only:
+    - main
+    - next
+    - merge_requests
+    - /\d.(\d|x).(\d|x)(-alpha)?$/
+    - /alpha$/
 
 Commits:
   stage: Qualidade
@@ -64,41 +41,45 @@ Commits:
     paths:
       - report-commitlint.txt
     expire_in: 1 week
-    expose_as: "Commitlint"
+    expose_as: "Commitlint Report"
   before_script:
     - apk --no-cache add git
-    - npm install @govbr-ds/commit-config
+    - npm i -g @govbr-ds/commit-config commitlint-gitlab-ci
   script:
-    - npx commitlint-gitlab-ci -x @govbr-ds/commit-config > report-commitlint.txt
-
-Instalar dependências:
-  stage: Dependências
-  environment:
-    name: production
-  when: manual
-  artifacts:
-    paths:
-      - node_modules
-    expire_in: 1 day
-  script:
-    - apk --no-cache add git
-    - npm install --legacy-peer-deps
+    - commitlint-gitlab-ci -x @govbr-ds/commit-config > report-commitlint.txt
   only:
     - main
     - next
+    - merge_requests
+    - /\d.(\d|x).(\d|x)(-alpha)?$/
+    - /alpha$/
+
+Instalar dependências:
+  stage: Dependências
+  script:
+    - apk --no-cache add git
+    - npm i
+  artifacts:
+    paths:
+      - node_modules
+    expire_in: 1 hour
+  only:
+    - main
+    - next
+    - merge_requests
     - /\d.(\d|x).(\d|x)(-alpha)?$/
     - /alpha$/
 
 pages:
   stage: Pages
-  environment:
-    name: production
   needs: ["Instalar dependências"]
   artifacts:
     paths:
       - public
+    expire_in: 1 day
+    expose_as: "Quickstart Angular Build"
   before_script:
-    - npm install -g @angular/cli@14.2.3
+    - npm install -g @angular/cli@15.0.4
   script:
     - rm -rf public
     - mkdir -p public
@@ -111,11 +92,8 @@ Semantic Release:
   stage: Release
   environment:
     name: production
-  needs: ["Instalar dependências"]
-  artifacts:
-    paths:
-      - dist
-    expire_in: 1 week
+  when: manual
+  needs: ["pages"]
   before_script:
     - apk --no-cache add git zip
   script:

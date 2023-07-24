@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.4.0](https://gitlab.com/govbr-ds/wbc/quickstarts/govbr-ds-wbc-quickstart-angular/compare/v1.3.0...v1.4.0) (24/07/2023)
+
+
+### ✨ Novidades
+
+* inclui novos exemplos e refatora os antigos ([2b77fab](https://gitlab.com/govbr-ds/wbc/quickstarts/govbr-ds-wbc-quickstart-angular/commit/2b77fabdcdd81dd0f8f4e23deec3c735d567c498))
+
 ## [1.3.0](https://gitlab.com/govbr-ds/dev/wbc/govbr-ds-wbc-quickstart-angular/compare/v1.2.0...v1.3.0) (14/06/2023)
 
 ### 📚 Documentação

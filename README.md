@@ -166,6 +166,97 @@ Basta seguir os passos acima e poderá utilizar o ngModel e o FormControl em seu
 <p>Valid (min value 0): {{ counter.valid }}</p>
 ```
 
+## Rotas com os web componentes e Frameworks
+
+O atributo isSpaLinkBehavior foi criado para adicionar suporte a um comportamento específico nos links do componente br-menu em aplicativos de página única (SPA). O objetivo principal é permitir que os links dentro do menu se comportem de forma diferente quando o aplicativo está em execução como SPA, em comparação com um comportamento tradicional de reload de página.
+
+Em aplicações SPA, onde as páginas são carregadas dinamicamente sem a necessidade de recarregar a página inteira, o comportamento padrão dos links é executar uma ação interna dentro da aplicação, navegando para a nova rota sem atualizar toda a página. No entanto, quando se trata de um link tradicional, ao clicar nele, a página é recarregada do zero, o que pode causar uma experiência mais lenta e indesejada para o usuário.
+
+Em resumo, o atributo isSpaLinkBehavior foi criado para o componente br-menu com o objetivo de oferecer suporte a aplicativos de página única (SPA). Quando definido como true para um item do menu, o link associado a esse item se comporta como um link interno do SPA, evitando o reload da página ao ser clicado. Isso proporciona uma navegação mais suave e eficiente para os usuários, melhorando a experiência geral do aplicativo. O atributo é particularmente útil em cenários com várias rotas no SPA, onde a necessidade de navegação interna é frequente. Recomenda-se usar o isSpaLinkBehavior sempre que houver links internos em um SPA, garantindo uma experiência de usuário mais agradável.
+
+menu.component.ts:
+
+```javascript
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+interface MenuItem {
+  id: number;
+  name: string;
+  url?: string;
+  isSpaLinkBehavior?: boolean;
+}
+
+@Component({
+  selector: 'app-menu',
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.css']
+})
+export class MenuComponent {
+  @Input() menuItems: MenuItem[] = [];
+  @Output() navigate: EventEmitter<string> = new EventEmitter<string>();
+
+  handleClick(menuItem: MenuItem, event: Event): void {
+    event.preventDefault();
+
+    if (menuItem.isSpaLinkBehavior && menuItem.url) {
+      this.navigate.emit(menuItem.url);
+    } else if (menuItem.url) {
+      window.location.href = menuItem.url;
+    }
+  }
+}
+```
+
+menu.component.html:
+
+```html
+<nav>
+  <ul>
+    <li *ngFor="let menuItem of menuItems">
+      <a
+        href="javascript:void(0)"
+        (click)="handleClick(menuItem, $event)"
+      >
+        {{ menuItem.name }}
+      </a>
+    </li>
+  </ul>
+</nav>
+```
+
+app.component.ts (exemplo de utilização):
+
+```javascript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <h1>Exemplo de uso do Menu</h1>
+    <app-menu [menuItems]="menuItems" (navigate)="onNavigate($event)"></app-menu>
+  `,
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  menuItems = [
+    { id: 1, name: 'Home', url: '/' },
+    { id: 2, name: 'Sobre', url: '/about' },
+    { id: 3, name: 'Serviços', url: '/services', isSpaLinkBehavior: true },
+    { id: 4, name: 'Contato', url: '/contact', isSpaLinkBehavior: true },
+    { id: 5, name: 'Link Externo', url: 'https://www.google.com', isSpaLinkBehavior: false },
+  ];
+
+  onNavigate(url: string): void {
+    console.log('Navegando para:', url);
+    // Lógica de navegação no SPA
+  }
+}
+```
+
+Neste exemplo, criamos um componente de menu chamado MenuComponent com um atributo de entrada menuItems, que é uma lista de objetos que representam os itens do menu. Cada item do menu pode ter um atributo isSpaLinkBehavior definido como true para indicar que o link deve ser tratado como um link interno do SPA. No método handleClick, verificamos se o isSpaLinkBehavior está definido para tratar a navegação de acordo com a necessidade.
+
+Lembre-se de que este é apenas um exemplo básico de como implementar o uso do atributo isSpaLinkBehavior em um componente Angular. Em um projeto real, você pode estender e personalizar esse exemplo de acordo com as necessidades específicas do seu aplicativo.
+
 ## Precisa de ajuda?
 
 > Por favor **não** crie issues para fazer perguntas...

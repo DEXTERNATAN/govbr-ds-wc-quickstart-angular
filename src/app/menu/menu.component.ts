@@ -1,4 +1,5 @@
 import { Component } from '@angular/core'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-menu',
@@ -7,36 +8,43 @@ import { Component } from '@angular/core'
 export class MenuComponent {
   public id: string = 'main-navigation'
 
+  constructor(private router: Router) {}
+
   public menuItems: MenuItem[] = [
     {
       id: 1,
       icon: 'home',
       name: 'Página Inicial',
       url: '/',
-      // isSpaLinkBehavior: true,
+      isSpaLinkBehavior: true,
     },
     {
       id: 2,
       icon: 'users-cog',
       name: 'Usuários',
       url: '/usuarios',
-      // isSpaLinkBehavior: true,
+      isSpaLinkBehavior: true,
     },
     {
       id: 3,
       icon: 'sign-in-alt',
       name: 'Sign-In',
       url: '/sign-in',
-      // isSpaLinkBehavior: true,
+      isSpaLinkBehavior: true,
     },
     {
       id: 4,
       icon: 'cookie',
       name: 'Cookiebar',
       url: '/cookiebar',
-      // isSpaLinkBehavior: true,
+      isSpaLinkBehavior: true,
     },
   ]
+
+  navigate(route: any) {
+    const { detail: pathRouter } = route
+    this.router.navigate(pathRouter)
+  }
 }
 
 interface MenuItem {
@@ -44,5 +52,5 @@ interface MenuItem {
   icon: string
   name: string
   url: string
-  // isSpaLinkBehavior: boolean
+  isSpaLinkBehavior?: boolean
 }

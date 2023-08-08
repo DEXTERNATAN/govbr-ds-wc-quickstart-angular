@@ -1,1 +1,8 @@
-<br-menu [id]="id" is-push show-menu [list]="menuItems" data-breakpoints="col-sm-4 col-lg-3"></br-menu>
+<br-menu
+  [id]="id"
+  is-push
+  show-menu
+  [list]="menuItems"
+  data-breakpoints="col-sm-4 col-lg-3"
+  (navigate)="navigate($event)"
+></br-menu>

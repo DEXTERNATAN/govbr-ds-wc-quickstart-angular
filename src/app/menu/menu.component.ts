@@ -10,7 +10,7 @@ export class MenuComponent {
 
   constructor(private router: Router) {}
 
-  public menuItems: MenuItem[] = [
+  public menuItems: any[] = [
     {
       id: 1,
       icon: 'home',
@@ -21,8 +21,8 @@ export class MenuComponent {
     {
       id: 2,
       icon: 'users-cog',
-      name: 'Usuários',
-      url: '/usuarios',
+      name: 'Formulário',
+      url: '/formulario',
       isSpaLinkBehavior: true,
     },
     {
@@ -45,12 +45,4 @@ export class MenuComponent {
     const { detail: pathRouter } = route
     this.router.navigate(pathRouter)
   }
-}
-
-interface MenuItem {
-  id: number
-  icon: string
-  name: string
-  url: string
-  isSpaLinkBehavior?: boolean
 }

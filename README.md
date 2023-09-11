@@ -6,6 +6,20 @@ Projeto exemplificando o uso da [biblioteca de Web Components do GovBR-DS](https
 
 [Visualização ao vivo](https://govbr-ds.gitlab.io/wbc/quickstarts/govbr-ds-wbc-quickstart-angular/main/).
 
+## O que é um quickstart?
+
+Um projeto Quickstart é um guia simplificado que mostra como criar um programa ou uma aplicação básica.
+
+## Considerações sobre segurança, qualidade e boas práticas
+
+É importante entender que um projeto Quickstart em software não deve ser usado diretamente em um ambiente de produção. Isso porque esses projetos são simplificados e podem não lidar com todos os desafios do mundo real.
+
+O código do projeto Quickstart pode não lidar com questões avançadas, como segurança, escalabilidade ou gerenciamento de erros. Portanto, antes de implantar o código em um ambiente de produção real, **é crucial revisar**, testar e personalizar o código para atender às necessidades específicas do projeto e garantir que seja robusto e seguro.
+
+Além disso, em projetos Quickstart de software, às vezes são tomadas liberdades na forma como o código é escrito para torná-lo mais fácil de entender. Isso pode significar que algumas boas práticas de programação não são seguidas ou que o código não está otimizado para desempenho máximo. Portanto, é responsabilidade do desenvolvedor adaptar o projeto Quickstart para atender às necessidades e padrões de produção adequados.
+
+Em resumo, um projeto Quickstart em software é **um ponto de partida** útil, mas não deve ser implantado diretamente em um ambiente de produção sem revisão e ajustes adequados. Os desenvolvedores devem lembrar que a simplicidade é frequentemente priorizada em projetos Quickstart em detrimento da complexidade do mundo real e devem personalizar o código para atender às necessidades específicas de seu projeto.
+
 ## Tecnologias
 
 Esse projeto é desenvolvido usando:

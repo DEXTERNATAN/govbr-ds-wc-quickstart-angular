@@ -1,13 +1,6 @@
 <br-message [state]="messageType" closable *ngIf="this.submitted">{{ message }}</br-message>
 
 <h1>Usuários</h1>
-
-<p>
-  Aqui demonstramos como usar o componente input em um formulário de forma que seja possível fazer two-way binding,
-  validações e resetar o formulário.
-</p>
-<p>Com o tempo iremos atualizar o conteúdo dessa pagina para novos componentes.</p>
-
 <h2>Cadastrar Usuário</h2>
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
   <div class="mb-3">
@@ -37,6 +30,8 @@
           label="E-mail:"
           formControlName="email"
           (input)="handleInput('email')"
+          (change)="handleChange()"
+          (blur)="handleBlur()"
         >
         </br-input>
         <div *ngIf="userForm.get('email').invalid && userForm.get('email').touched">

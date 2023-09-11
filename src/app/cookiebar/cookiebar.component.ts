@@ -1,79 +1,12 @@
 import { Component, ViewChild } from '@angular/core'
-
-interface ContentData {
-  [lang: string]: {
-    labels: {
-      close: string
-      update: string
-      categories: string
-      enableAll: string
-      disableAll: string
-      enableCategory: string
-      disableCategory: string
-      enableCookie: string
-      disableCookie: string
-      awaysEnabled: string
-      cookie: string
-      expiry: string
-      domain: string
-      company: string
-      purpose: string
-      description: string
-      acceptButton: string
-      rejectButton: string
-      optInButton: string
-      optOutButton: string
-      notes: string
-    }
-    intro: {
-      observation: string
-      title: string
-      update: string
-      foreword: string
-    }
-    all: {
-      optIn: boolean
-      enable: boolean
-      alert: string
-    }
-    categories: {
-      id: string
-      name: string
-      optIn?: boolean
-      enable?: boolean
-      alert?: string
-      description: string
-    }[]
-    cookies: {
-      id: string
-      categoryId: string
-      name: string
-      expiry: string
-      domain: string
-      company: string
-      purpose: string
-      description: string
-      alert?: string
-    }[]
-    notes: {
-      question: string
-      answer: string
-    }[]
-    links?: {
-      name: string
-      url: string
-    }[]
-  }
-}
-
 @Component({
   selector: 'app-cookiebar',
   templateUrl: './cookiebar.component.html',
 })
 export class CookiebarComponent {
-  lang = ''
+  lang = 'pt-br'
 
-  content: ContentData = {
+  content = {
     'pt-br': {
       labels: {
         close: 'Voltar',
@@ -85,7 +18,7 @@ export class CookiebarComponent {
         disableCategory: 'Desselecionar toda classe',
         enableCookie: 'Selecionar',
         disableCookie: 'Desselecionar',
-        awaysEnabled: 'Sempre ativo',
+        alwaysEnabled: 'Sempre ativo',
         cookie: 'Cookies',
         expiry: 'Vencimento',
         domain: 'Domínio',

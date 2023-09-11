@@ -1,7 +1,4 @@
 <br-message state="info" show-icon [closable]="false">Leia com atenção as informações abaixo</br-message>
 
-<p>Esse projeto serve como exemplo de uso da nossa biblioteca de Web Componentes.</p>
-<p>
-  Sinta-se à vontade para usá-lo como ponto de partida para seu projeto ou como exemplo de uso, mas tenha em mente que
-  ele não é considerado <strong>"pronto para produção"</strong>.
-</p>
+<markdown [src]="'./assets/README.md'" [srcRelativeLink]="true" (load)="onLoad($event)" (error)="onError($event)">
+</markdown>

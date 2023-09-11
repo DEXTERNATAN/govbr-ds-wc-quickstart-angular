@@ -6,10 +6,10 @@ import { Usuario } from './usuario.model'
  * Componente responsável pelo gerenciamento do formulário de usuário.
  */
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
+  selector: 'app-form',
+  templateUrl: './form.component.html',
 })
-export class UserComponent {
+export class FormComponent {
   public userForm: FormGroup
   public submittedUsers: Usuario[] = []
   public message: string
@@ -58,7 +58,7 @@ export class UserComponent {
       this.showFormSubmitted('Formulário enviado com sucesso!', 'success')
     } else {
       this.userForm.markAllAsTouched()
-      this.showFormSubmitted('Formulário inválido', 'danger')
+      this.showFormSubmitted('Formulário inválido!', 'danger')
     }
   }
 
@@ -108,6 +108,7 @@ export class UserComponent {
    * @param fieldName O nome do campo.
    */
   handleInput(fieldName: string) {
+    console.log('Input')
     const fieldControl = this.userForm.get(fieldName)
 
     if (fieldControl?.value?.toString()?.trim() === '') {
@@ -116,5 +117,12 @@ export class UserComponent {
       fieldControl?.markAsPristine()
       fieldControl?.updateValueAndValidity()
     }
+  }
+
+  handleBlur() {
+    console.log('blur')
+  }
+  handleChange() {
+    console.log('change')
   }
 }

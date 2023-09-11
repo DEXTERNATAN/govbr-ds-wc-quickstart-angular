@@ -1,28 +1,18 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router'
 
-interface BreadcrumbLink {
-  label: string
-  url?: string
-  home?: boolean
-  active?: boolean
-}
-
 @Component({
   selector: 'app-breadcrumb',
   templateUrl: './breadcrumb.component.html',
 })
 export class BreadcrumbComponent implements OnInit {
   showBreadcrumb = false
-  links: BreadcrumbLink[] = [
-    {
-      label: 'Página Inicial',
-      url: '/',
-      home: true,
-    },
-  ]
+  links: any[] = []
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   /**
    * Método do ciclo de vida do Angular que é executado ao inicializar o componente.
@@ -33,6 +23,15 @@ export class BreadcrumbComponent implements OnInit {
       if (event instanceof NavigationEnd) {
         // Obtém o snapshot da rota atual
         const currentRoute = this.route.root.firstChild.snapshot
+
+        this.links = [
+          {
+            label: 'Página Inicial',
+            url: '/',
+            home: true,
+          },
+        ]
+        this.showBreadcrumb = false
 
         // Verifica se a rota atual é diferente de 'home' para adicionar o link correspondente no breadcrumb
         if (currentRoute.routeConfig.path !== 'home') {

@@ -1,64 +1,39 @@
 {
-  "[html]": {
+  "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
-  },
-  "[vue]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[yaml]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
-  },
-  "cSpell.allowCompoundWords": true,
-  "cSpell.enabled": false,
-  "cSpell.language": "pt-BR,en-US,pt",
-  "cSpell.words": [
-    "Web Components"
-  ],
+  "editor.autoIndent": "full",
+  "editor.bracketPairColorization.enabled": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": true,
     "source.fixAll.eslint": true,
     "source.fixAll.markdownlint": true,
-    "source.fixAll.stylelint": true,
     "source.organizeImports": true
   },
-  "editor.codeLens": true,
+  "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
-  "editor.trimAutoWhitespace": true,
-  "emmet.includeLanguages": {
-    "javascript": "javascriptreact",
-    "markdown": "html",
-    "plaintext": "pug",
-    "vue-html": "html"
-  },
-  "eslint.packageManager": "npm",
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
+  "editor.rulers": [
+    80,
+    120
   ],
-  "gitlens.blame.ignoreWhitespace": true,
-  "gitlens.codeLens.authors.enabled": true,
-  "gitlens.codeLens.enabled": true,
-  "gitlens.codeLens.recentChange.enabled": true,
-  "gitlens.defaultDateStyle": "absolute",
-  "path-intellisense.autoSlashAfterDirectory": true,
-  "prettier.configPath": ".prettierrc.yml",
-  "prettier.resolveGlobalModules": true,
-  "prettier.useEditorConfig": true,
-  "prettier.withNodeModules": false,
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.svn": true,
+    "**/*.js": {
+      "when": "$(basename).ts"
+    },
+    "**/*.map": true,
+    "**/CVS": true,
+    "**/obj": true
+  },
+  "html.format.enable": true,
+  "html.format.indentHandlebars": true,
+  "html.format.indentInnerHtml": true,
+  "html.format.wrapAttributes": "aligned-multiple",
+  "html.format.wrapLineLength": 100,
+  "json.format.enable": true,
   "todo-tree.general.statusBar": "total",
   "todo-tree.general.tags": [
     "ADD",
@@ -73,7 +48,7 @@
     "ADD": {
       "background": "#D4E5FF",
       "foreground": "#071D41",
-      "icon": "plus-circle",
+      "icon": "diff-added",
       "iconColour": "#155BCB"
     },
     "DEPRECATED": {
@@ -90,9 +65,9 @@
     },
     "FIXME": {
       "background": "#FDE0DB",
-      "foreground": "#5C1111",
+      "foreground": "#E52207",
       "icon": "bug",
-      "iconColour": "#E52207"
+      "iconColour": "#5C1111"
     },
     "REFACTOR": {
       "background": "#FFF5C2",
@@ -103,7 +78,7 @@
     "REMOVE": {
       "background": "#FDE0DB",
       "foreground": "#5C1111",
-      "icon": "x-circle",
+      "icon": "diff-removed",
       "iconColour": "#E52207"
     },
     "TODO": {
@@ -117,5 +92,8 @@
     "gutterIcon": true
   },
   "todo-tree.highlights.enabled": true,
-  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)"
+  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+  "todo-tree.tree.scanAtStartup": true,
+  "todo-tree.tree.showBadges": true,
+  "todo-tree.tree.showCountsInTree": true,
 }

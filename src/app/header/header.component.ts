@@ -8,15 +8,15 @@ import { Component } from '@angular/core'
   templateUrl: './header.component.html',
 })
 export class HeaderComponent {
-  public title: string = 'Web Components GovBR-DS -  Quickstart Angular'
+  public title: string = 'Web Components GovBR-DS - Quickstart Angular'
   public isOpen: boolean = true
   public signature: string = 'Padrão Digital de Governo'
-  public image: Image = {
+  public image = {
     src: 'assets/logo_angular.png',
     alt: 'Logo de exemplo',
   }
 
-  public links: Link[] = [
+  public links: any[] = [
     {
       name: 'Web Components',
       href: 'https://www.gov.br/ds/webcomponents',
@@ -31,7 +31,7 @@ export class HeaderComponent {
     },
   ]
 
-  public functions: FunctionItem[] = [
+  public functions: any[] = [
     {
       icon: 'code',
       name: 'Repositórios de Web Components',
@@ -59,25 +59,4 @@ export class HeaderComponent {
   public toggleMenu(): void {
     this.isOpen = !this.isOpen
   }
-}
-
-interface Image {
-  src: string
-  alt: string
-}
-
-interface Link {
-  name: string
-  href: string
-  title: string
-  target: string
-}
-
-interface FunctionItem {
-  icon: string
-  iconFamily?: string
-  name: string
-  url: string
-  tooltipText: string
-  tooltipPlace: string
 }

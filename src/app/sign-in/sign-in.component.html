@@ -9,22 +9,25 @@
 
 <div class="dropdown">
   <br-sign-in *ngIf="!isLogged" type="primary" label="Entrar com" entity="gov.br" (click)="toggleSignIn()"></br-sign-in>
-  <button
-    class="br-sign-in"
-    type="button"
-    id="avatar-dropdown-trigger"
-    aria-label="Abrir menu do usuário"
-    (click)="this.userMenuVisible = !this.userMenuVisible"
-    data-toggle="dropdown"
-    data-target="user-menu"
-    aria-controls="user-menu"
-    [attr.data-visible]="isLogged"
-    [attr.aria-expanded]="isLogged"
-  >
-    <br-avatar *ngIf="isLogged" name="Usuário Logado" image="https://picsum.photos/id/823/400"> </br-avatar>
-    <i class="fas fa-caret-up" aria-hidden="true" *ngIf="isLogged && userMenuVisible"></i>
-    <i class="fas fa-caret-down" aria-hidden="true" *ngIf="isLogged && !userMenuVisible"></i>
-  </button>
+
+  <ng-container *ngIf="isLogged">
+    <button
+      class="br-sign-in"
+      type="button"
+      id="avatar-dropdown-trigger"
+      aria-label="Abrir menu do usuário"
+      (click)="this.userMenuVisible = !this.userMenuVisible"
+      data-toggle="dropdown"
+      data-target="user-menu"
+      aria-controls="user-menu"
+      [attr.data-visible]="isLogged"
+      [attr.aria-expanded]="isLogged"
+    >
+      <br-avatar name="Usuário Logado" image="https://picsum.photos/id/823/400"> </br-avatar>
+      <i class="fas fa-caret-up" aria-hidden="true" *ngIf="userMenuVisible"></i>
+      <i class="fas fa-caret-down" aria-hidden="true" *ngIf="!userMenuVisible"></i>
+    </button>
+  </ng-container>
   <br-list id="user-menu" *ngIf="userMenuVisible">
     <br-item hover (click)="toggleFunctionality($event)">Funcionalidade 01</br-item>
     <br-item hover (click)="toggleFunctionality($event)">Funcionalidade 02</br-item>

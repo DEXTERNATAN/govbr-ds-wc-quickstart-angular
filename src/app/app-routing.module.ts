@@ -3,9 +3,9 @@ import { FormsModule } from '@angular/forms'
 import { BrowserModule } from '@angular/platform-browser'
 import { RouterModule, Routes } from '@angular/router'
 import { CookiebarComponent } from './cookiebar/cookiebar.component'
+import { FormComponent } from './form/form.component'
 import { HomeComponent } from './home/home.component'
 import { SignInComponent } from './sign-in/sign-in.component'
-import { UserComponent } from './user/user.component'
 
 const routes: Routes = [
   {
@@ -18,9 +18,9 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'usuarios',
-    component: UserComponent,
-    data: { breadCrumb: 'Usuários' },
+    path: 'formulario',
+    component: FormComponent,
+    data: { breadCrumb: 'Formulário' },
   },
   {
     path: 'sign-in',

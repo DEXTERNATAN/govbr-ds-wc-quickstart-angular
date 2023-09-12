@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## [1.5.0](https://gitlab.com/govbr-ds/wbc/quickstarts/govbr-ds-wbc-quickstart-angular/compare/v1.4.0...v1.5.0) (12/09/2023)
+
+
+### ✨ NOVIDADES
+
+* **menu:** adiciona prop para funcionar melhor com spa ([d528499](https://gitlab.com/govbr-ds/wbc/quickstarts/govbr-ds-wbc-quickstart-angular/commit/d528499225139384d4376507fd765b40e69547e2))
+* formulário, signin e cookiebar atualizados conforme os padrões ([9043a39](https://gitlab.com/govbr-ds/wbc/quickstarts/govbr-ds-wbc-quickstart-angular/commit/9043a39d8fc228a3edd41f44fcae706ece81b3fd))
+
+
+### 🪲 CORREÇÕES
+
+* inclui a dep ngx-markdown que estava faltando ([c8057b5](https://gitlab.com/govbr-ds/wbc/quickstarts/govbr-ds-wbc-quickstart-angular/commit/c8057b5511b8801efcea18c9434b0aeb3a36fd97))
+
 ## [1.4.0](https://gitlab.com/govbr-ds/wbc/quickstarts/govbr-ds-wbc-quickstart-angular/compare/v1.3.0...v1.4.0) (24/07/2023)
 
 

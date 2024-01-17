@@ -35,7 +35,7 @@ export class HeaderComponent {
     {
       icon: 'code',
       name: 'Repositórios de Web Components',
-      url: 'https://gitlab.com/govbr-ds/wbc',
+      url: 'https://gitlab.com/govbr-ds/bibliotecas/wc',
       tooltipText: 'Contribua com os projetos de Web Components',
       tooltipPlace: 'bottom',
     },

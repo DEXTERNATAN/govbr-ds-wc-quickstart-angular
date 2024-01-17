@@ -9,11 +9,11 @@
     "web components",
     "angular"
   ],
-  "homepage": "https://govbr-ds.gitlab.io/wbc/quickstarts/govbr-ds-wbc-quickstart-angular",
-  "bugs": "https://gitlab.com/govbr-ds/wbc/quickstarts/govbr-ds-wbc-quickstart-angular/-/issues",
-  "repository": "gitlab:govbr-ds/wbc/quickstarts/govbr-ds-wbc-quickstart-angular.git",
+  "homepage": "https://govbr-ds.gitlab.io/bibliotecas/wc/govbr-ds-wc-quickstart-angular/",
+  "bugs": "https://gitlab.com/govbr-ds/bibliotecas/wc/govbr-ds-wc-quickstart-angular/-/issues",
+  "repository": "gitlab:govbr-ds/bibliotecas/wc/govbr-ds-wc-quickstart-angular.git",
   "license": "MIT",
-  "author": "SERPRO <govbr-ds@serpro.gov.br> (http://serpro.gov.br/)",
+  "author": "SERPRO (http://serpro.gov.br/)",
   "contributors": [
     "Dataprev (https://portal3.dataprev.gov.br/)"
   ],

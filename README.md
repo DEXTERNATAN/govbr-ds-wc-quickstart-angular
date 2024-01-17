@@ -4,7 +4,7 @@
 
 Projeto exemplificando o uso da [biblioteca de Web Components do GovBR-DS](https://gov.br/ds/webcomponents 'Biblioteca de Web Components do GovBR-DS') em projetos [Angular](https://angular.io/ 'Angular').
 
-[Visualização ao vivo](https://govbr-ds.gitlab.io/wbc/quickstarts/govbr-ds-wbc-quickstart-angular/main/).
+[Visualização ao vivo](https://govbr-ds.gitlab.io/bibliotecas/wc/govbr-ds-wc-quickstart-angular//main/).
 
 ## O que é um quickstart?
 
@@ -50,7 +50,7 @@ As principais dependências do projeto são:
 ## Como executar o projeto?
 
 ```sh
-git clone git@gitlab.com:govbr-ds/wbc/quickstarts/govbr-ds-wbc-quickstart-angular.git
+git clone git@gitlab.com:govbr-ds/bibliotecas/wc/govbr-ds-wc-quickstart-angular.git
 
 npm install
 
@@ -227,12 +227,7 @@ menu.component.html:
 <nav>
   <ul>
     <li *ngFor="let menuItem of menuItems">
-      <a
-        href="javascript:void(0)"
-        (click)="handleClick(menuItem, $event)"
-      >
-        {{ menuItem.name }}
-      </a>
+      <a href="javascript:void(0)" (click)="handleClick(menuItem, $event)"> {{ menuItem.name }} </a>
     </li>
   </ul>
 </nav>
@@ -280,8 +275,6 @@ Use nossos canais abaixo para obter tirar suas dúvidas:
 -   Site do GovBR-DS [http://gov.br/ds](http://gov.br/ds)
 
 -   Web Components [https://gov.br/ds/webcomponents/](https://gov.br/ds/webcomponents/)
-
--   Pelo nosso email <govbr-ds@serpro.gov.br>
 
 -   Usando nosso canal no discord [https://discord.gg/U5GwPfqhUP](https://discord.gg/U5GwPfqhUP)
 

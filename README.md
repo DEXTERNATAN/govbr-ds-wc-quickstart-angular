@@ -95,19 +95,19 @@ Inclua no index.html da aplicação as seguintes dependências:
 
 ## app.module.ts
 
--   Importe o `CUSTOM_ELEMENTS_SCHEMA` de `@angular/core`.
+- Importe o `CUSTOM_ELEMENTS_SCHEMA` de `@angular/core`.
 
 ```typescript
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 ```
 
--   Adicione os `schemas` e inclua o `CUSTOM_ELEMENTS_SCHEMA`.
+- Adicione os `schemas` e inclua o `CUSTOM_ELEMENTS_SCHEMA`.
 
 ```typescript
 schemas: [CUSTOM_ELEMENTS_SCHEMA]
 ```
 
--   O código final deve ficar como abaixo:
+- O código final deve ficar como abaixo:
 
 ```typescript
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
@@ -272,19 +272,19 @@ Lembre-se de que este é apenas um exemplo básico de como implementar o uso do 
 
 Use nossos canais abaixo para obter tirar suas dúvidas:
 
--   Site do GovBR-DS [http://gov.br/ds](http://gov.br/ds)
+- Site do GovBR-DS [http://gov.br/ds](http://gov.br/ds)
 
--   Web Components [https://gov.br/ds/webcomponents/](https://gov.br/ds/webcomponents/)
+- Web Components [https://gov.br/ds/webcomponents/](https://gov.br/ds/webcomponents/)
 
--   Usando nosso canal no discord [https://discord.gg/U5GwPfqhUP](https://discord.gg/U5GwPfqhUP)
+- Usando nosso canal no discord [https://discord.gg/U5GwPfqhUP](https://discord.gg/U5GwPfqhUP)
 
 ## Como contribuir?
 
 Antes de abrir um Merge Request tenha em mente algumas informações:
 
--   Esse é um projeto opensource e contribuições são bem-vindas.
--   Para facilitar a aprovação da sua contribuição, escolha um título curto, simples e explicativo para o MR, e siga os padrões da nossa [wiki](https://gov.br/ds/wiki/ 'Wiki').
--   Quer contribuir com o projeto? Confira o nosso guia [como contribuir](./CONTRIBUTING.md 'Como contribuir?').
+- Esse é um projeto opensource e contribuições são bem-vindas.
+- Para facilitar a aprovação da sua contribuição, escolha um título curto, simples e explicativo para o MR, e siga os padrões da nossa [wiki](https://gov.br/ds/wiki/ 'Wiki').
+- Quer contribuir com o projeto? Confira o nosso guia [como contribuir](./CONTRIBUTING.md 'Como contribuir?').
 
 ## Commits
 

@@ -12,10 +12,7 @@
   },
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
-  "editor.rulers": [
-    80,
-    120
-  ],
+  "editor.rulers": [80, 120],
   "files.exclude": {
     "**/.DS_Store": true,
     "**/.git": true,
@@ -35,15 +32,7 @@
   "html.format.wrapLineLength": 100,
   "json.format.enable": true,
   "todo-tree.general.statusBar": "total",
-  "todo-tree.general.tags": [
-    "ADD",
-    "DEPRECATED",
-    "DOC",
-    "FIXME",
-    "REFACTOR",
-    "REMOVE",
-    "TODO"
-  ],
+  "todo-tree.general.tags": ["ADD", "DEPRECATED", "DOC", "FIXME", "REFACTOR", "REMOVE", "TODO"],
   "todo-tree.highlights.customHighlight": {
     "ADD": {
       "background": "#D4E5FF",
@@ -95,5 +84,5 @@
   "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
   "todo-tree.tree.scanAtStartup": true,
   "todo-tree.tree.showBadges": true,
-  "todo-tree.tree.showCountsInTree": true,
+  "todo-tree.tree.showCountsInTree": true
 }

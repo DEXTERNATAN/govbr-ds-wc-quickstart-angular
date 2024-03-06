@@ -20,7 +20,10 @@ export class CustomValueAccessorDirective implements ControlValueAccessor {
   private _value: string
   public disabled = false
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
+  constructor(
+    private elementRef: ElementRef,
+    private renderer: Renderer2
+  ) {}
 
   /**
    * Obtém o valor do campo.

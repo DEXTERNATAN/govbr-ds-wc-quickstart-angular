@@ -1,7 +1,4 @@
-include:
-  - template: Jobs/Dependency-Scanning.gitlab-ci.yml
-
-image: node:18-alpine
+image: node:20.11.0-alpine
 
 cache:
   paths:
@@ -10,9 +7,19 @@ cache:
 stages:
   - Qualidade
   - Dependências
-  - test
   - Pages
   - Release
+
+Instalar Dependências:
+  stage: Dependências
+  when: always
+  script:
+    - apk --no-cache add git
+    - npm install
+  artifacts:
+    paths:
+      - node_modules
+    expire_in: 1 hour
 
 Markdown:
   stage: Qualidade
@@ -23,16 +30,11 @@ Markdown:
     expire_in: 1 week
     expose_as: "Markdownlint Report"
   before_script:
-    - apk --no-cache add
     - npm i -g markdownlint-cli
   script:
     - markdownlint '**/*.md' -o report-markdownlint.txt
-  only:
-    - main
-    - next
-    - merge_requests
-    - /\d.(\d|x).(\d|x)(-alpha)?$/
-    - /alpha$/
+  rules:
+    - when: always
 
 Commits:
   stage: Qualidade
@@ -42,37 +44,14 @@ Commits:
       - report-commitlint.txt
     expire_in: 1 week
     expose_as: "Commitlint Report"
-  before_script:
-    - apk --no-cache add git
-    - npm i -g @govbr-ds/commit-config commitlint-gitlab-ci
   script:
-    - commitlint-gitlab-ci -x @govbr-ds/commit-config > report-commitlint.txt
-  only:
-    - main
-    - next
-    - merge_requests
-    - /\d.(\d|x).(\d|x)(-alpha)?$/
-    - /alpha$/
-
-Instalar dependências:
-  stage: Dependências
-  script:
-    - apk --no-cache add git
-    - npm i
-  artifacts:
-    paths:
-      - node_modules
-    expire_in: 1 hour
-  only:
-    - main
-    - next
-    - merge_requests
-    - /\d.(\d|x).(\d|x)(-alpha)?$/
-    - /alpha$/
+    - npx commitlint-gitlab-ci -x @govbr-ds/commitlint-config > report-commitlint.txt
+  rules:
+    - when: always
 
 pages:
   stage: Pages
-  needs: ["Instalar dependências"]
+  needs: ["Instalar Dependências"]
   artifacts:
     paths:
       - public
@@ -96,6 +75,7 @@ Semantic Release:
   needs: ["pages"]
   before_script:
     - apk --no-cache add git zip
+    - npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
   script:
     - npx semantic-release
   only:

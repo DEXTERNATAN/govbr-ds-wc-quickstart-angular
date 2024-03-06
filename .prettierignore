@@ -13,3 +13,4 @@
 **/*.webp
 **/*.raw
 .editorconfig
+*.md

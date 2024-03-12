@@ -20,6 +20,8 @@ Instalar Dependências:
     paths:
       - node_modules
     expire_in: 1 hour
+  rules:
+    - when: always
 
 Markdown:
   stage: Qualidade

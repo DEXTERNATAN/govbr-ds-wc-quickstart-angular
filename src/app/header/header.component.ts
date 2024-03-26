@@ -1,4 +1,5 @@
 import { Component } from '@angular/core'
+import { SharedService } from '../shared.service'
 
 /**
  * Componente do cabeçalho da aplicação.
@@ -9,12 +10,13 @@ import { Component } from '@angular/core'
 })
 export class HeaderComponent {
   public title: string = 'Web Components GovBR-DS - Quickstart Angular'
-  public isOpen: boolean = true
   public signature: string = 'Padrão Digital de Governo'
   public image = {
     src: 'assets/logo_angular.png',
     alt: 'Logo de exemplo',
   }
+
+  constructor(public sharedService: SharedService) {}
 
   public links: any[] = [
     {
@@ -57,6 +59,6 @@ export class HeaderComponent {
   ]
 
   public toggleMenu(): void {
-    this.isOpen = !this.isOpen
+    this.sharedService.isOpen = !this.sharedService.isOpen
   }
 }

@@ -15,9 +15,7 @@
       circle
       density="small"
       aria-label="Menu"
-      [icon]="isOpen ? 'times' : 'bars'"
-      data-toggle="menu"
-      data-target="#main-navigation"
+      [icon]="sharedService.isOpen ? 'times' : 'bars'"
       (click)="toggleMenu()"
     ></br-button>
   </div>

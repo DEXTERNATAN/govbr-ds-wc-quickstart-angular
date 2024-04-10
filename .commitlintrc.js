@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ['@govbr-ds/commit-config'],
+  extends: ['@govbr-ds/commitlint-config'],
 }

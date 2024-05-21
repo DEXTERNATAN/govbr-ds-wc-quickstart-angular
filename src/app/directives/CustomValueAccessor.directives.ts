@@ -5,7 +5,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
  * Diretiva customizada para acessar e controlar o valor de um input.
  */
 @Directive({
-  selector: 'br-input',
+  selector: 'br-input, br-select',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -29,6 +29,7 @@ export class CustomValueAccessorDirective implements ControlValueAccessor {
    * Obtém o valor do campo.
    */
   public get value(): string {
+    console.log(this._value)
     return this._value
   }
 

@@ -8,4 +8,5 @@ export class Usuario {
   rg: string
   address: string
   cep: string
+  uf: string
 }

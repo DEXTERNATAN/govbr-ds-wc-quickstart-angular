@@ -18,18 +18,46 @@ export class FormComponent {
   public submitted: boolean = false
   constructor(private fb: FormBuilder) {}
 
+  STATES = []
+
   ngOnInit() {
     this.userForm = this.fb.group({
-      name: [null, Validators.required],
-      email: [null, Validators.required],
-      mobile: [null, Validators.required],
-      cpf: [null, Validators.required],
-      birthDate: [null, Validators.required],
-      password: [null, Validators.required],
-      rg: [null, Validators.required],
+      name: [null, Validators.required], //, Validators.required
+      email: [null], //, Validators.required
+      mobile: [null], //, Validators.required
+      cpf: [null], //, Validators.required
+      birthDate: [null], //, Validators.required
+      password: [null], //, Validators.required
+      rg: [null], //, Validators.required
       address: [null],
       cep: [null],
+      uf: [null, Validators.required],
     })
+
+    this.fetchData('https://api.thecatapi.com/v1/breeds?limit=10&page=0').then((data) => {
+      data.map((data) => {
+        this.STATES.push({
+          value: data.name,
+          label: data.name,
+          selected: false,
+        })
+      })
+    })
+  }
+
+  fetchData(url: string): Promise<any> {
+    return fetch(url)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok ' + response.statusText)
+        }
+
+        return response.json()
+      })
+      .catch((error) => {
+        console.error('There has been a problem with your fetch operation:', error)
+        throw error
+      })
   }
 
   /**
@@ -49,8 +77,9 @@ export class FormComponent {
         rg: this.userForm.value.rg,
         address: this.userForm.value.address,
         cep: this.userForm.value.cep,
+        uf: this.userForm.value.uf,
       }
-
+      console.log(user)
       this.submittedUsers.push(user)
 
       this.resetForm()
@@ -77,6 +106,7 @@ export class FormComponent {
     this.userForm.get('rg').reset()
     this.userForm.get('address').reset()
     this.userForm.get('cep').reset()
+    this.userForm.get('uf').reset()
   }
 
   /**
@@ -124,5 +154,9 @@ export class FormComponent {
   }
   handleChange() {
     console.log('change')
+  }
+
+  selecionaUfEnderecoProduto(event: any): void {
+    console.info('Selecionando UF do endereço do produto', event.detail[0])
   }
 }

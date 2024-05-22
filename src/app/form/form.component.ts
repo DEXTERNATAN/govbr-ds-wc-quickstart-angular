@@ -19,13 +19,7 @@ export class FormComponent {
   constructor(private fb: FormBuilder) {}
   selectedState: {}
 
-  STATES = [
-    {
-      value: 'DF',
-      label: 'DF',
-      selected: false,
-    },
-  ]
+  STATES = []
 
   ngOnInit() {
     this.userForm = this.fb.group({
@@ -42,48 +36,55 @@ export class FormComponent {
     })
   }
 
-  ngAfterViewInit() {
-    this.fetchData('https://api.thecatapi.com/v1/breeds?limit=10&page=0')
-      .then((data) => {
-        data.map((data) => {
-          this.STATES.push({
-            value: data.name,
-            label: data.name,
-            selected: false,
-          })
-        })
-      })
-      .then((data) => {
-        this.STATES = [...this.STATES]
-      })
+  async ngAfterViewInit() {
+    try {
+      const data = await this.fetchData('https://api.thecatapi.com/v1/breeds?limit=10&page=0')
+      this.STATES = data.map((breed: any) => ({
+        value: breed.name,
+        label: breed.name,
+        selected: false,
+      }))
 
-    setTimeout(() => {
-      this.STATES = this.STATES.map((data) => {
-        if (data.value === 'Aegean') {
-          data.selected = true
-        }
-        return data
-      })
+      /*
+       * Aqui vc passa o valor que deseja selecionar no componente select quando vier da tela de editar
+       * */
+      this.updateSelectValue('Aegean')
 
-      this.STATES = [...this.STATES]
+      // Atualiza o valor selecionado no estado usando o formControlName
       this.userForm.get('uf')?.setValue(this.STATES)
-      // this.selectedState = 'Abyssinian'
-    }, 5000)
+    } catch (error) {
+      console.error('Error fetching data:', error)
+    }
   }
 
-  fetchData(url: string): Promise<any> {
-    return fetch(url)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok ' + response.statusText)
-        }
+  /**
+   * Busca dados de um URL especificado.
+   * @param url O URL de onde os dados serão buscados.
+   * @returns Uma promessa que resolve com os dados da resposta em formato JSON.
+   * @throws Lança um erro se a resposta da rede não for bem-sucedida ou se ocorrer um problema durante a operação de fetch.
+   */
+  async fetchData(url: string): Promise<any> {
+    try {
+      const response = await fetch(url)
+      if (!response.ok) {
+        throw new Error('Network response was not ok ' + response.statusText)
+      }
+      return await response.json()
+    } catch (error) {
+      console.error('There has been a problem with your fetch operation:', error)
+      throw error
+    }
+  }
 
-        return response.json()
-      })
-      .catch((error) => {
-        console.error('There has been a problem with your fetch operation:', error)
-        throw error
-      })
+  /**
+   * Atualiza o valor selecionado no estado.
+   * @param paramFilterSelected O valor que deve ser selecionado.
+   */
+  private updateSelectValue(paramFilterSelected: string | number) {
+    this.STATES = this.STATES.map((data) => ({
+      ...data,
+      selected: data.value === paramFilterSelected,
+    }))
   }
 
   /**
@@ -183,8 +184,6 @@ export class FormComponent {
   }
 
   selecionaUfEnderecoProduto(event: any): void {
-    // console.info('Selecionando UF do endereço do produto', event)
     console.info('Selecionando UF do endereço do produto', event?.detail[0])
-    // this.userForm.get('uf').setValue(event.detail[0])
   }
 }

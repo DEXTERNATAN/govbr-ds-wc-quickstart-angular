@@ -14,12 +14,6 @@
     (change)="selecionaUfEnderecoProduto($event)"
   >
   </br-select>
-  <select id="uf" name="uf" formControlName="uf" (ngModelChange)="selecionaUfEnderecoProduto($event)">
-    <option value="">Selecione o item</option>
-    <option *ngFor="let option of STATES" [value]="option.value" [selected]="option.selected == true">
-      {{ option.label }}-{{ option.selected }}
-    </option>
-  </select>
   <div *ngIf="userForm.get('uf').invalid && userForm.get('uf').touched">
     <div *ngIf="userForm.get('uf').errors.required">
       <app-message [control]="userForm.get('uf')" error="required" message="O campo é obrigatório"></app-message>

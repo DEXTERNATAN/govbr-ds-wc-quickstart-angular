@@ -17,8 +17,15 @@ export class FormComponent {
   public messageType: string
   public submitted: boolean = false
   constructor(private fb: FormBuilder) {}
+  selectedState: {}
 
-  STATES = []
+  STATES = [
+    {
+      value: 'DF',
+      label: 'DF',
+      selected: false,
+    },
+  ]
 
   ngOnInit() {
     this.userForm = this.fb.group({
@@ -33,16 +40,35 @@ export class FormComponent {
       cep: [null],
       uf: [null, Validators.required],
     })
+  }
 
-    this.fetchData('https://api.thecatapi.com/v1/breeds?limit=10&page=0').then((data) => {
-      data.map((data) => {
-        this.STATES.push({
-          value: data.name,
-          label: data.name,
-          selected: false,
+  ngAfterViewInit() {
+    this.fetchData('https://api.thecatapi.com/v1/breeds?limit=10&page=0')
+      .then((data) => {
+        data.map((data) => {
+          this.STATES.push({
+            value: data.name,
+            label: data.name,
+            selected: false,
+          })
         })
       })
-    })
+      .then((data) => {
+        this.STATES = [...this.STATES]
+      })
+
+    setTimeout(() => {
+      this.STATES = this.STATES.map((data) => {
+        if (data.value === 'Aegean') {
+          data.selected = true
+        }
+        return data
+      })
+
+      this.STATES = [...this.STATES]
+      this.userForm.get('uf')?.setValue(this.STATES)
+      // this.selectedState = 'Abyssinian'
+    }, 5000)
   }
 
   fetchData(url: string): Promise<any> {
@@ -157,6 +183,8 @@ export class FormComponent {
   }
 
   selecionaUfEnderecoProduto(event: any): void {
-    console.info('Selecionando UF do endereço do produto', event.detail[0])
+    // console.info('Selecionando UF do endereço do produto', event)
+    console.info('Selecionando UF do endereço do produto', event?.detail[0])
+    // this.userForm.get('uf').setValue(event.detail[0])
   }
 }

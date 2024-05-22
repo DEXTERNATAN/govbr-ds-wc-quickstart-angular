@@ -2,9 +2,9 @@
 
 <h1>Usuários</h1>
 <h2>Cadastrar Usuário</h2>
-<span>UF validation: {{ userForm.get("uf").value | json }}</span>
+<span>UF selected: {{ userForm.get("uf").value | json }}</span>
 <br />
-<span>UF value selected: {{ userForm.get("uf").errors | json }}</span>
+<span>UF value validation: {{ userForm.get("uf").errors | json }}</span>
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
   <br-select
     label="UF *"
@@ -14,6 +14,12 @@
     (change)="selecionaUfEnderecoProduto($event)"
   >
   </br-select>
+  <select id="uf" name="uf" formControlName="uf" (ngModelChange)="selecionaUfEnderecoProduto($event)">
+    <option value="">Selecione o item</option>
+    <option *ngFor="let option of STATES" [value]="option.value" [selected]="option.selected == true">
+      {{ option.label }}-{{ option.selected }}
+    </option>
+  </select>
   <div *ngIf="userForm.get('uf').invalid && userForm.get('uf').touched">
     <div *ngIf="userForm.get('uf').errors.required">
       <app-message [control]="userForm.get('uf')" error="required" message="O campo é obrigatório"></app-message>

@@ -2,9 +2,6 @@
 
 <h1>Usuários</h1>
 <h2>Cadastrar Usuário</h2>
-<span>UF selected: {{ userForm.get("uf").value | json }}</span>
-<br />
-<span>UF value validation: {{ userForm.get("uf").errors | json }}</span>
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
   <br-select
     show-search-icon

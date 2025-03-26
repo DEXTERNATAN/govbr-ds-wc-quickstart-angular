@@ -7,6 +7,7 @@
 <span>UF value validation: {{ userForm.get("uf").errors | json }}</span>
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
   <br-select
+    show-search-icon
     label="UF *"
     [options]="STATES"
     formControlName="uf"
